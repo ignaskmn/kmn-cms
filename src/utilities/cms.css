@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter.ttf") format("truetype-variations");
+  font-weight: 125 950;
+  font-stretch: 75% 125%;
+  font-style: oblique 0deg 20deg;
+}
+
+:root {
+    --font-body: 'Inter', sans-serif;
+    --font-serif: 'Inter', sans-serif;
+}
+
+html {
+    background: red;
+}

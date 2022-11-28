@@ -1,0 +1,19 @@
+.logo svg {
+    margin: auto;
+    fill: (var(--theme-text));
+}
+
+.icon svg {
+    margin: auto;
+    fill: (var(--theme-text));
+}
+
+@media (prefers-color-scheme: dark) {
+  .icon img {
+    filter: invert(100%);
+  }
+
+  .logo img {
+    filter: invert(100%);
+  }
+}
