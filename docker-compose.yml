@@ -10,26 +10,26 @@ services:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
+    command: sh -c "yarn install && cp /src/assets/Inter.ttf /node_modules/payload/dist/admin/assets/fonts && yarn dev"
     depends_on:
       - mongo
     environment:
-      MONGODB_URI: mongodb://mongo:27017/payload
+      MONGODB_URI: ${MONGODB_URI}
       PORT: 3000
       NODE_ENV: development
-      PAYLOAD_SECRET: TESTING
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
 
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    command:
-      - --storageEngine=wiredTiger
-    volumes:
-      - data:/data/db
-    logging:
-      driver: none
+  # mongo:
+  #   image: mongo:latest
+  #   ports:
+  #     - "27017:27017"
+  #   command:
+  #     - --storageEngine=wiredTiger
+  #   volumes:
+  #     - data:/data/db
+  #   logging:
+  #     driver: none
 
 volumes:
-  data:
+  # data:
   node_modules:
