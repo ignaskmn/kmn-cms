@@ -12,7 +12,3 @@ COPY . .
 RUN yarn install
 
 RUN cp /home/node/app/src/assets/Inter.ttf /home/node/app/node_modules/payload/dist/admin/assets/fonts/
-
-# Run the app
-RUN yarn dev
-
