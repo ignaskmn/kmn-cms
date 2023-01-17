@@ -10,7 +10,7 @@ services:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
-    command: sh -c "yarn install && cp /src/assets/Inter.ttf /node_modules/payload/dist/admin/assets/fonts && yarn dev"
+    command: sh -c "yarn install && cp /src/assets/Inter.ttf /node_modules/payload/dist/admin/assets/fonts/ && yarn dev"
     depends_on:
       - mongo
     environment:
