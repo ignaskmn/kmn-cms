@@ -5,8 +5,8 @@ services:
   payload:
     image: ignasandr/kmn-cms_payload:latest
     # image: node:18-alpine
-    ports:
-      - "3001:3001"
+    # ports:
+    #   - "3001:3001"
   
     volumes:
       - .:/home/node/app
