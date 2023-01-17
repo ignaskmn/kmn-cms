@@ -6,20 +6,20 @@ services:
     build: .
     # image: node:18-alpine
     # ports:
-    #   - "3000:3000"
+    #   - "3001:3001"
   
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
     command: sh -c "yarn dev"
     # depends_on:
     #   - mongo
     environment:
-      MONGODB_URI: ${MONGODB_URI}
-      PORT: 3000
+      # MONGODB_URI: ${MONGODB_URI}
+      MONGODB_URI: mongodb+srv://kmnweb:KaunoMenai56@cluster0.pccwr.mongodb.net/kmn-payload-nextjs?retryWrites=true&w=majority
+      PAYLOAD_SECRET: 081b04e3-1deb-4f8e-967f-89f9a7c3d623
       NODE_ENV: development
-      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      # PAYLOAD_SECRET: ${PAYLOAD_SECRET}
 
   # mongo:
   #   image: mongo:latest

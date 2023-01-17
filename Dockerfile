@@ -1,7 +1,5 @@
 FROM node:18-alpine
 
-ENV MONGODB_URI=mongodb+srv://kmnweb:KaunoMenai56@cluster0.pccwr.mongodb.net/kmn-payload-nextjs?retryWrites=true&w=majority
-ENV PAYLOAD_SECRET=081b04e3-1deb-4f8e-967f-89f9a7c3d623
 # Create app directory
 WORKDIR /home/node/app
 
