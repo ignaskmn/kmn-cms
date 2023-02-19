@@ -7,6 +7,8 @@ WORKDIR /home/node/app
 COPY . .
 
 # Install dependencies with yarn
-RUN yarn install
+RUN yarn install && cp /home/node/app/src/assets/Inter.ttf /home/node/app/node_modules/payload/dist/admin/assets/fonts/ && yarn build
 
-RUN cp /home/node/app/src/assets/Inter.ttf /home/node/app/node_modules/payload/dist/admin/assets/fonts/
+# RUN cp /home/node/app/src/assets/Inter.ttf /home/node/app/node_modules/payload/dist/admin/assets/fonts/
+
+# RUN yarn build

@@ -1,0 +1,2 @@
+docker build . -t ignasandr/kmn-cms_payload:latest
+docker push ignasandr/kmn-cms_payload:latest

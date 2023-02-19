@@ -4,24 +4,15 @@ services:
 
   payload:
     image: ignasandr/kmn-cms_payload:latest
-    # image: node:18-alpine
-    # ports:
-    #   - "3001:3001"
-  
     volumes:
-      - .:/home/node/app
       - node_modules:/home/node/app/node_modules
-    command: sh -c "yarn dev"
-    # depends_on:
-    #   - mongo
+    command: sh -c "yarn serve"
     environment:
-      # MONGODB_URI: ${MONGODB_URI}
-      # PAYLOAD_SECRET: ${PAYLOAD_SECRET}
-      MONGODB_URI: mongodb+srv://kmnweb:KaunoMenai56@cluster0.pccwr.mongodb.net/kmn-payload-nextjs?retryWrites=true&w=majority
-      PAYLOAD_SECRET: 081b04e3-1deb-4f8e-967f-89f9a7c3d623
-      NODE_ENV: development
-    networks:
-      - npm_default
+      MONGODB_URI: ${MONGODB_URI}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      NODE_ENV: production
+    # networks:
+    #   - npm_default
 
   # mongo:
   #   image: mongo:latest
@@ -38,6 +29,6 @@ volumes:
   # data:
   node_modules:
 
-networks:
-  npm_default:
-    external: true
+# networks:
+#   npm_default:
+#     external: true
