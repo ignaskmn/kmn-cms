@@ -17,7 +17,7 @@ const Menu: GlobalConfig = {
             {
               name: "label",
               type: "text",
-              required: true,
+              localized: true,
               admin: {
                 width: "50%",
               },
@@ -25,7 +25,7 @@ const Menu: GlobalConfig = {
             {
               name: "slug",
               type: "text",
-              required: true,
+              localized: true,
               admin: {
                 width: "50%",
               },
@@ -52,7 +52,7 @@ const Menu: GlobalConfig = {
                 {
                   name: "label",
                   type: "text",
-                  required: true,
+                  localized: true,
                   admin: {
                     width: "50%",
                   },
@@ -60,7 +60,7 @@ const Menu: GlobalConfig = {
                 {
                   name: "slug",
                   type: "text",
-                  required: true,
+                  localized: true,
                   admin: {
                     width: "50%",
                   },
