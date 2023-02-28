@@ -8,8 +8,10 @@ services:
       - node_modules:/home/node/app/node_modules
     command: sh -c "yarn serve"
     environment:
-      MONGODB_URI: ${MONGODB_URI}
-      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      # MONGODB_URI: ${MONGODB_URI}
+      # PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      MONGODB_URI: mongodb+srv://kmnweb:KaunoMenai56@cluster0.pccwr.mongodb.net/kmn-payload-nextjs?retryWrites=true&w=majority
+      PAYLOAD_SECRET: 081b04e3-1deb-4f8e-967f-89f9a7c3d623
       NODE_ENV: production
     # networks:
     #   - npm_default
