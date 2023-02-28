@@ -3,6 +3,7 @@ import path from "path";
 import Users from "./collections/Users";
 import Examples from "./collections/Examples";
 import Media from "./collections/Media";
+import Activities from "./collections/Activities";
 import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
 import AdminIcon from "./components/AdminGraphics/adminIcon";
@@ -24,7 +25,7 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Examples, Media],
+  collections: [Users, Examples, Activities, Media],
   globals: [Menu],
   localization: {
     locales: ["lt", "en"],

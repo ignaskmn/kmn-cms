@@ -12,6 +12,7 @@ const Examples: CollectionConfig = {
   fields: [
     {
       name: "thisIsAField",
+      label: "This is a field",
       type: "text",
       localized: true,
     },
