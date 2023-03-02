@@ -16,10 +16,9 @@ export const Content: Block = {
     {
       name: 'content',
       type: 'richText',
-      localized: true,
       admin: {
         elements: [
-          'h1', 'h2', 'link', 'upload', 'indent'
+          'h2', 'h3', 'link', 'upload'
         ],
         leaves: [
           'bold', 'italic', 'underline'
