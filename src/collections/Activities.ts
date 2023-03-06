@@ -1,5 +1,6 @@
 import { CollectionConfig } from "payload/types";
 import { Content, Type as ContentType } from "../blocks/Content";
+import formatSlug from "../utilities/formatSlug";
 
 export const Activities: CollectionConfig = {
   slug: "activities",
@@ -10,6 +11,18 @@ export const Activities: CollectionConfig = {
     read: (): boolean => true, // Everyone can read Pages
   },
   fields: [
+    {
+      name: "slug",
+      label: { en: "Slug", lt: "Nuoroda" },
+      type: "text",
+      unique: true,
+      admin: {
+        position: "sidebar",
+      },
+      hooks: {
+        beforeValidate: [formatSlug("title")],
+      },
+    },
     {
       name: "title",
       label: { en: "Activity Title", lt: "Veiklos Pavadinimas" },
