@@ -8,6 +8,7 @@ export type Type = {
 
 export const Content: Block = {
   slug: 'content',
+  imageURL: 'http://localhost:3000/assets/blocks/content.png',
   labels: {
     singular: 'Content',
     plural: 'Content Blocks',

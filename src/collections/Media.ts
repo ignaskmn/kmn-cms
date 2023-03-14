@@ -12,11 +12,6 @@ export type MediaType = {
       width: number;
       height: number;
     };
-    square?: {
-      filename: string;
-      width: number;
-      height: number;
-    };
   };
 };
 
@@ -39,11 +34,6 @@ const Media: CollectionConfig = {
         name: "thumbnail",
         width: 480,
         height: 320,
-      },
-      {
-        name: "square",
-        width: 640,
-        height: 640,
       },
     ],
   },
