@@ -1,7 +1,7 @@
 import { CollectionConfig } from "payload/types";
 import path from "path";
 
-export type MediaType = {
+export type ImagesType = {
   filename: string;
   width: number;
   height: number;
@@ -15,20 +15,19 @@ export type MediaType = {
   };
 };
 
-const Media: CollectionConfig = {
-  slug: "media",
+const Images: CollectionConfig = {
+  slug: "images",
   access: {
     read: (): boolean => true, // Everyone can read Media
   },
   admin: {
     useAsTitle: "filename",
-    group: "Content",
+    group: "Uploads",
   },
   upload: {
     adminThumbnail: "thumbnail",
-    staticDir: path.resolve(__dirname, "../../media"),
+    staticDir: path.resolve(__dirname, "../../uploads/images"),
     mimeTypes: ["image/png", "image/jpeg"],
-
     imageSizes: [
       {
         name: "thumbnail",
@@ -47,4 +46,4 @@ const Media: CollectionConfig = {
   ],
 };
 
-export default Media;
+export default Images;

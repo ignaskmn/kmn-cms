@@ -1,10 +1,11 @@
 import { buildConfig } from "payload/config";
 import path from "path";
 import seo from "@payloadcms/plugin-seo";
-// import { GenerateTitle } from "@payloadcms/plugin-seo/dist/types";
 import Users from "./collections/Users";
 import Examples from "./collections/Examples";
-import Media from "./collections/Media";
+import Images from "./collections/Images";
+import Tags from "./collections/Tags";
+import Documents from "./collections/Documents";
 import Activities from "./collections/Activities";
 import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
@@ -27,7 +28,7 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Examples, Activities, Media],
+  collections: [Users, Examples, Activities, Images, Documents, Tags],
   globals: [Menu],
   localization: {
     locales: ["lt", "en"],
@@ -37,7 +38,7 @@ export default buildConfig({
   plugins: [
     seo({
       collections: ["activities"],
-      uploadsCollection: "media",
+      uploadsCollection: "images",
       generateTitle: ({ doc }: any) =>
         `Kauno Menininkų Namai - ${doc?.title?.value}`,
       generateDescription: ({ doc }: any) =>

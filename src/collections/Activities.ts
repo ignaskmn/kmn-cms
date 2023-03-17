@@ -1,6 +1,7 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
 import { Participants, Type as ParticipantsType } from "../blocks/Participants";
+import { Tags, Type as TagsType } from "./Tags";
 
 export type Type = {
   slug: string;
@@ -18,6 +19,7 @@ export type Type = {
   image9x16: string;
   image1x1: string;
   layout?: ParticipantsType[];
+  tags?: TagsType[];
 };
 
 export const Activities: CollectionConfig = {
@@ -142,23 +144,23 @@ export const Activities: CollectionConfig = {
               ],
             },
             {
+              name: "description",
+              label: "Description",
+              type: "textarea",
+              localized: true,
+            },
+            {
               name: "image9x16",
               label: "Featured Image 9 x 16",
               type: "upload",
               required: true,
-              relationTo: "media",
+              relationTo: "images",
             },
             {
               name: "image1x1",
               label: "Featured Image 1 x 1",
               type: "upload",
-              relationTo: "media",
-            },
-            {
-              name: "description",
-              label: "Description",
-              type: "textarea",
-              localized: true,
+              relationTo: "images",
             },
           ],
         },
@@ -170,6 +172,18 @@ export const Activities: CollectionConfig = {
               label: "Activity Layout",
               type: "blocks",
               blocks: [Participants],
+            },
+          ],
+        },
+        {
+          label: "Tags",
+          fields: [
+            {
+              name: "tags",
+              label: "Tags",
+              type: "relationship",
+              hasMany: true,
+              relationTo: "tags",
             },
           ],
         },

@@ -15,6 +15,7 @@ export const Participants: Block = {
         {
             name: "title",
             type: "text",
+            localized: true,
         },
         {
             name: "participants",
