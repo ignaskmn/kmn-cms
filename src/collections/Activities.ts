@@ -1,7 +1,6 @@
 import { CollectionConfig } from "payload/types";
-import { Content, Type as ContentType } from "../blocks/Content";
-import { Collapse, Type as CollapseType } from "../blocks/Collapse";
 import formatSlug from "../utilities/formatSlug";
+import { Participants, Type as ParticipantsType } from "../blocks/Participants";
 
 export type Type = {
   slug: string;
@@ -16,8 +15,9 @@ export type Type = {
     | "massEvent";
   start: string;
   end?: string;
-  image: string;
-  layout: ContentType[] | CollapseType[];
+  image9x16: string;
+  image1x1: string;
+  layout?: ParticipantsType[];
 };
 
 export const Activities: CollectionConfig = {
@@ -34,6 +34,7 @@ export const Activities: CollectionConfig = {
       label: { en: "Slug", lt: "Nuoroda" },
       type: "text",
       unique: true,
+      localized: true,
       admin: {
         position: "sidebar",
       },
@@ -144,6 +145,7 @@ export const Activities: CollectionConfig = {
               name: "image9x16",
               label: "Featured Image 9 x 16",
               type: "upload",
+              required: true,
               relationTo: "media",
             },
             {
@@ -151,6 +153,12 @@ export const Activities: CollectionConfig = {
               label: "Featured Image 1 x 1",
               type: "upload",
               relationTo: "media",
+            },
+            {
+              name: "description",
+              label: "Description",
+              type: "textarea",
+              localized: true,
             },
           ],
         },
@@ -161,8 +169,7 @@ export const Activities: CollectionConfig = {
               name: "layout",
               label: "Activity Layout",
               type: "blocks",
-              minRows: 1,
-              blocks: [Content, Collapse],
+              blocks: [Participants],
             },
           ],
         },

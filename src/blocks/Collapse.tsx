@@ -44,10 +44,12 @@ export const Collapse: Block = {
                 {
                     name: "title",
                     type: "text",
+                    localized: true,
                 },
                 {
                     name: "description",
                     type: "textarea",
+                    localized: true
                 }
 
             ]
@@ -75,10 +77,12 @@ export const Collapse: Block = {
                 {
                     name: "nationality",
                     type: "text",
+                    localized: true,
                 },
                 {
                     name: "description",
                     type: "textarea",
+                    localized: true
                 },
             ]
         }

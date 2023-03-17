@@ -1,5 +1,7 @@
 import { buildConfig } from "payload/config";
 import path from "path";
+import seo from "@payloadcms/plugin-seo";
+// import { GenerateTitle } from "@payloadcms/plugin-seo/dist/types";
 import Users from "./collections/Users";
 import Examples from "./collections/Examples";
 import Media from "./collections/Media";
@@ -32,6 +34,17 @@ export default buildConfig({
     defaultLocale: "lt",
     fallback: false,
   },
+  plugins: [
+    seo({
+      collections: ["activities"],
+      uploadsCollection: "media",
+      generateTitle: ({ doc }: any) =>
+        `Kauno Menininkų Namai - ${doc?.title?.value}`,
+      generateDescription: ({ doc }: any) =>
+        `${doc?.description?.value.substring(0, 144)} (...)`,
+      generateImage: ({ doc }: any) => doc?.image9x16?.value,
+    }),
+  ],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
