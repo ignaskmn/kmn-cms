@@ -75,11 +75,11 @@ export const Activities: CollectionConfig = {
                   value: "education",
                 },
                 {
-                  label: { lt: "Concert", en: "Koncertas" },
-                  value: "concert",
+                  label: { lt: "Sound", en: "Garsas" },
+                  value: "sound",
                 },
                 {
-                  label: { lt: "Event", en: "Renginys" },
+                  label: { lt: "Event", en: "Kitas Renginys" },
                   value: "event",
                 },
                 {
