@@ -1,26 +1,25 @@
 import { Block } from 'payload/types';
 
 export type Type = {
-  blockType: 'content'
+  blockType: 'richText'
   blockName?: string
   content: unknown
 }
 
-export const Content: Block = {
-  slug: 'content',
-  imageURL: 'http://localhost:3000/assets/blocks/content.png',
+export const InfoRichText: Block = {
+  slug: 'richText',
+  imageURL: 'http://localhost:3000/assets/blocks/richText.png',
   labels: {
-    singular: 'Content',
-    plural: 'Content Blocks',
+    singular: 'Rich Text',
+    plural: 'Rich Text Blocks',
   },
   fields: [
     {
       name: 'content',
       type: 'richText',
-      localized: true,
       admin: {
         elements: [
-          'h2', 'h3', 'link', 'upload'
+          'link', 'ol', 'ul'
         ],
         leaves: [
           'bold', 'italic', 'underline'
@@ -30,4 +29,4 @@ export const Content: Block = {
   ],
 };
 
-export default Content;
+export default InfoRichText;

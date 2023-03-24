@@ -10,6 +10,13 @@ const Menu: GlobalConfig = {
       name: "menuItems",
       label: "Menu Items",
       type: "array",
+      admin: {
+        components: {
+          RowLabel: ({ data, index }: any) => {
+            return data?.label || `Menu Item ${String(index).padStart(2, "0")}`;
+          },
+        },
+      },
       fields: [
         {
           type: "row",
@@ -44,6 +51,14 @@ const Menu: GlobalConfig = {
           type: "array",
           admin: {
             condition: (_, { submenu } = {}) => submenu,
+            components: {
+              RowLabel: ({ data, index }: any) => {
+                return (
+                  data?.label ||
+                  `Submenu Item ${String(index).padStart(2, "0")}`
+                );
+              },
+            },
           },
           fields: [
             {

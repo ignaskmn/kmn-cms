@@ -4,9 +4,10 @@ import seo from "@payloadcms/plugin-seo";
 import Users from "./collections/Users";
 import Examples from "./collections/Examples";
 import Images from "./collections/Images";
+import Information from "./globals/Information";
 import Tags from "./collections/Tags";
 import Documents from "./collections/Documents";
-import Activities from "./collections/Activities";
+import Projects from "./collections/Projects";
 import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
 import AdminIcon from "./components/AdminGraphics/adminIcon";
@@ -28,8 +29,8 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Examples, Activities, Images, Documents, Tags],
-  globals: [Menu],
+  collections: [Users, Examples, Projects, Images, Documents, Tags],
+  globals: [Menu, Information],
   localization: {
     locales: ["lt", "en"],
     defaultLocale: "lt",

@@ -1,7 +1,7 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
 import { Participants, Type as ParticipantsType } from "../blocks/Participants";
-import { Tags, Type as TagsType } from "./Tags";
+import { Type as TagsType } from "./Tags";
 
 export type Type = {
   slug: string;
@@ -22,8 +22,8 @@ export type Type = {
   tags?: TagsType[];
 };
 
-export const Activities: CollectionConfig = {
-  slug: "activities",
+export const Projects: CollectionConfig = {
+  slug: "projects",
   admin: {
     useAsTitle: "title",
   },
@@ -52,14 +52,14 @@ export const Activities: CollectionConfig = {
           fields: [
             {
               name: "title",
-              label: { en: "Activity Title", lt: "Veiklos Pavadinimas" },
+              label: { en: "Project Title", lt: "Veiklos Pavadinimas" },
               type: "text",
               required: true,
               localized: true,
             },
             {
               name: "type",
-              label: { en: "Activity Type", lt: "Veiklos Tipas" },
+              label: { en: "Project Type", lt: "Veiklos Tipas" },
               type: "select",
               options: [
                 {
@@ -192,4 +192,4 @@ export const Activities: CollectionConfig = {
   ],
 };
 
-export default Activities;
+export default Projects;
