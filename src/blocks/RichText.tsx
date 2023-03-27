@@ -6,7 +6,7 @@ export type Type = {
   content: unknown
 }
 
-export const InfoRichText: Block = {
+export const RichText: Block = {
   slug: 'richText',
   imageURL: 'http://localhost:3000/assets/blocks/richText.png',
   labels: {
@@ -29,4 +29,4 @@ export const InfoRichText: Block = {
   ],
 };
 
-export default InfoRichText;
+export default RichText;

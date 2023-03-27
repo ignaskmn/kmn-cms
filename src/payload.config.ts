@@ -38,7 +38,7 @@ export default buildConfig({
   },
   plugins: [
     seo({
-      collections: ["activities"],
+      collections: ["projects"],
       uploadsCollection: "images",
       generateTitle: ({ doc }: any) =>
         `Kauno Menininkų Namai - ${doc?.title?.value}`,

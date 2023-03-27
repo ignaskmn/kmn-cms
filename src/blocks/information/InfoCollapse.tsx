@@ -1,5 +1,5 @@
 import { Block } from 'payload/types';
-import InfoDocDownload from './InfoDocDownload';
+import InfoDoc from './InfoDoc';
 
 export type Type = {
     slug: string;
@@ -8,8 +8,8 @@ export type Type = {
 }
 
 export const InfoSmallCollapse: Block = {
-    slug: 'infoSmallCollapse',
-    labels: {singular: "Small Collapse", plural: "Small Collapse Blocks"}, 
+    slug: 'infoCollapse',
+    labels: {singular: "Collapse", plural: "Collapse Blocks"}, 
     imageURL: 'http://localhost:3000/assets/blocks/smallCollapse.png',
     fields: [
         {
@@ -20,7 +20,8 @@ export const InfoSmallCollapse: Block = {
             name: "content",
             label: "Files",
             type: "blocks",
-            blocks: [InfoDocDownload]
+            maxRows: 1,
+            blocks: [InfoDoc]
         }
     ]
 }

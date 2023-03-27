@@ -1,8 +1,8 @@
 import { GlobalConfig } from "payload/types";
-import InfoRichText from "../blocks/InfoRichText";
-import InfoDocDownload from "../blocks/InfoDocDownload";
-import InfoSmallCollapse from "../blocks/InfoSmallCollapse";
-import InfoBoxes from "../blocks/InfoBoxes";
+import RichText from "../blocks/RichText";
+import InfoDoc from "../blocks/information/InfoDoc";
+import InfoCollapse from "../blocks/information/InfoCollapse";
+import InfoBoxes from "../blocks/information/InfoBoxes";
 
 const Information: GlobalConfig = {
   slug: "information",
@@ -33,14 +33,13 @@ const Information: GlobalConfig = {
             lt: "Informacinės Sekcijos Pavadinimas",
           },
           type: "text",
-          required: true,
           localized: true,
         },
         {
           name: "layout",
           label: { en: "Layout", lt: "Išdėstymas" },
           type: "blocks",
-          blocks: [InfoDocDownload, InfoRichText, InfoSmallCollapse, InfoBoxes],
+          blocks: [InfoDoc, RichText, InfoCollapse, InfoBoxes],
         },
       ],
     },

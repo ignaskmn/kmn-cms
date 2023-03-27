@@ -131,9 +131,10 @@ export const Projects: CollectionConfig = {
               type: "row",
               admin: {
                 condition: (_, { type } = {}) =>
-                  type === "concert" ||
+                  type === "sound" ||
                   type === "event" ||
-                  type === "screening",
+                  type === "screening" ||
+                  type === "massEvent",
               },
               fields: [
                 {

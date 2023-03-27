@@ -7,13 +7,13 @@ export type Type = {
 }
 
 export const InfoDocDownload: Block = {
-    slug: 'infoDocDownload',
+    slug: 'infoDoc',
     labels: {singular: "Documents", plural: "Documents"}, 
     imageURL: 'http://localhost:3000/assets/blocks/document.png',
     fields: [
         {
             name: "content",
-            labels: {singular: "Single Document", plural: "Single Documents"},
+            labels: {singular: "Document", plural: "Documents"},
             type: "array",
             fields: [
                 {
