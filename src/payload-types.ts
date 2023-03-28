@@ -35,8 +35,8 @@ export interface Information {
     layout: (
       | {
           content: {
-            title?: string;
-            download?: string | Document;
+            label?: string;
+            file?: string | Document;
             id?: string;
           }[];
           id?: string;
@@ -54,14 +54,9 @@ export interface Information {
       | {
           title?: string;
           content: {
-            content: {
-              title?: string;
-              download?: string | Document;
-              id?: string;
-            }[];
+            label?: string;
+            file?: string | Document;
             id?: string;
-            blockName?: string;
-            blockType: 'infoDoc';
           }[];
           id?: string;
           blockName?: string;
@@ -69,7 +64,7 @@ export interface Information {
         }
       | {
           content: {
-            label: string;
+            label?: string;
             file?: string | Document;
             id?: string;
           }[];

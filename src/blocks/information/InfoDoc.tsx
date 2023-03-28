@@ -17,11 +17,11 @@ export const InfoDocDownload: Block = {
             type: "array",
             fields: [
                 {
-                    name: "title",
+                    name: "label",
                     type: "text"
                 },
                 {
-                    name: "download",
+                    name: "file",
                     label: "File",
                     type: "upload",
                     relationTo: "documents"

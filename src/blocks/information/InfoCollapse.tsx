@@ -9,7 +9,7 @@ export type Type = {
 
 export const InfoSmallCollapse: Block = {
     slug: 'infoCollapse',
-    labels: {singular: "Collapse", plural: "Collapse Blocks"}, 
+    labels: {singular: "Collapse", plural: "Collapse"}, 
     imageURL: 'http://localhost:3000/assets/blocks/smallCollapse.png',
     fields: [
         {
@@ -18,10 +18,20 @@ export const InfoSmallCollapse: Block = {
         },
         {
             name: "content",
-            label: "Files",
-            type: "blocks",
-            maxRows: 1,
-            blocks: [InfoDoc]
+            labels: {singular: "Document", plural: "Documents"},
+            type: "array",
+            fields: [
+                {
+                    name: "label",
+                    type: "text"
+                },
+                {
+                    name: "file",
+                    label: "File",
+                    type: "upload",
+                    relationTo: "documents"
+                }
+            ]
         }
     ]
 }

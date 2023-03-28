@@ -34,6 +34,7 @@ const Information: GlobalConfig = {
           },
           type: "text",
           localized: true,
+          required: true,
         },
         {
           name: "layout",

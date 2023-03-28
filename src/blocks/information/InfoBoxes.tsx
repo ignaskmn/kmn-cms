@@ -24,11 +24,11 @@ export const InfoBoxes: Block = {
             fields: [
                 {
                     name: "label",
-                    type: "text",
-                    required: true
+                    type: "text"
                 },
                 {
                     name: "file",
+                    label: "File",
                     type: "upload",
                     relationTo: "documents"
                 }
