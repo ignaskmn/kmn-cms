@@ -11,6 +11,7 @@ import Projects from "./collections/Projects";
 import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
 import AdminIcon from "./components/AdminGraphics/adminIcon";
+import Facilities from "./globals/Facilities";
 
 export default buildConfig({
   // serverURL: "https://tvs.kmn.lt",
@@ -30,7 +31,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Examples, Projects, Images, Documents, Tags],
-  globals: [Menu, Information],
+  globals: [Menu, Information, Facilities],
   localization: {
     locales: ["lt", "en"],
     defaultLocale: "lt",
