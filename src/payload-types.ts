@@ -31,7 +31,7 @@ export interface Menu {
 export interface Information {
   id: string;
   informationBlocks: {
-    title?: string;
+    title: string;
     layout: (
       | {
           content: {
@@ -41,7 +41,7 @@ export interface Information {
           }[];
           id?: string;
           blockName?: string;
-          blockType: 'infoDoc';
+          blockType: "infoDoc";
         }
       | {
           content?: {
@@ -49,7 +49,7 @@ export interface Information {
           }[];
           id?: string;
           blockName?: string;
-          blockType: 'richText';
+          blockType: "richText";
         }
       | {
           title?: string;
@@ -60,7 +60,7 @@ export interface Information {
           }[];
           id?: string;
           blockName?: string;
-          blockType: 'infoCollapse';
+          blockType: "infoCollapse";
         }
       | {
           content: {
@@ -70,7 +70,7 @@ export interface Information {
           }[];
           id?: string;
           blockName?: string;
-          blockType: 'infoBoxes';
+          blockType: "infoBoxes";
         }
     )[];
     id?: string;
@@ -88,6 +88,115 @@ export interface Document {
   filesize?: number;
   width?: number;
   height?: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "facilities".
+ */
+export interface Facility {
+  id: string;
+  facilityBlocks: {
+    title: string;
+    layout: (
+      | {
+          content: {
+            label?: string;
+            image1x1?: string | Image;
+            id?: string;
+          }[];
+          id?: string;
+          blockName?: string;
+          blockType: "faciSpaces";
+        }
+      | {
+          content: {
+            label?: string;
+            size?: number;
+            description?: {
+              [k: string]: unknown;
+            }[];
+            image9x16: string | Image;
+            image1x1?: string | Image;
+            id?: string;
+          }[];
+          id?: string;
+          blockName?: string;
+          blockType: "faciRooms";
+        }
+      | {
+          hours?: string;
+          email?: string;
+          phone?: string;
+          content: {
+            label?: string;
+            description?: {
+              [k: string]: unknown;
+            }[];
+            id?: string;
+          }[];
+          id?: string;
+          blockName?: string;
+          blockType: "faciReadingRoom";
+        }
+      | {
+          content: {
+            label?: string;
+            type?: "price" | "files" | "contacts";
+            price: {
+              servicePrice?: string;
+              unit?: "eur" | "eurh";
+              description?: string;
+            };
+            files: {
+              content: {
+                label?: string;
+                file?: string | Document;
+                id?: string;
+              }[];
+            };
+            contacts: {
+              name?: string;
+              surname?: string;
+              email?: string;
+              phone?: string;
+            };
+            id?: string;
+          }[];
+          id?: string;
+          blockName?: string;
+          blockType: "faciOther";
+        }
+    )[];
+    id?: string;
+  }[];
+}
+
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "images".
+ */
+export interface Image {
+  id: string;
+  alt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  sizes: {
+    thumbnail: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
   createdAt: string;
   updatedAt: string;
 }
@@ -123,7 +232,14 @@ export interface Project {
   id: string;
   slug?: string;
   title: string;
-  type?: 'residency' | 'exhibition' | 'education' | 'sound' | 'event' | 'screening' | 'massEvent';
+  type?:
+    | "residency"
+    | "exhibition"
+    | "education"
+    | "sound"
+    | "event"
+    | "screening"
+    | "massEvent";
   start?: string;
   end?: string;
   description?: string;
@@ -140,39 +256,13 @@ export interface Project {
     }[];
     id?: string;
     blockName?: string;
-    blockType: 'participants';
+    blockType: "participants";
   }[];
   tags?: string[] | Tag[];
   meta: {
     title?: string;
     description?: string;
     image?: string | Image;
-  };
-  createdAt: string;
-  updatedAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "images".
- */
-export interface Image {
-  id: string;
-  alt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
-  sizes: {
-    thumbnail: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
   };
   createdAt: string;
   updatedAt: string;

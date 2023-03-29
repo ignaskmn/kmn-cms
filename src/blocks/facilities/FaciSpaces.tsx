@@ -7,7 +7,7 @@ export const FaciSpaces: Block = {
     fields: [
         {
             name: "content",
-            labels: {singular: "Facility Spaces", plural: "Facility Spaces"},
+            labels: {singular: "Space", plural: "Spaces"},
             type: "array",
             admin: {
                 components: {
