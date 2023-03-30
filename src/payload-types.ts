@@ -41,7 +41,7 @@ export interface Information {
           }[];
           id?: string;
           blockName?: string;
-          blockType: "infoDoc";
+          blockType: 'infoDoc';
         }
       | {
           content?: {
@@ -49,7 +49,7 @@ export interface Information {
           }[];
           id?: string;
           blockName?: string;
-          blockType: "richText";
+          blockType: 'richText';
         }
       | {
           title?: string;
@@ -60,7 +60,7 @@ export interface Information {
           }[];
           id?: string;
           blockName?: string;
-          blockType: "infoCollapse";
+          blockType: 'infoCollapse';
         }
       | {
           content: {
@@ -70,7 +70,7 @@ export interface Information {
           }[];
           id?: string;
           blockName?: string;
-          blockType: "infoBoxes";
+          blockType: 'infoBoxes';
         }
     )[];
     id?: string;
@@ -91,7 +91,6 @@ export interface Document {
   createdAt: string;
   updatedAt: string;
 }
-
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "facilities".
@@ -109,7 +108,7 @@ export interface Facility {
           }[];
           id?: string;
           blockName?: string;
-          blockType: "faciSpaces";
+          blockType: 'faciSpaces';
         }
       | {
           content: {
@@ -124,7 +123,7 @@ export interface Facility {
           }[];
           id?: string;
           blockName?: string;
-          blockType: "faciRooms";
+          blockType: 'faciRooms';
         }
       | {
           hours?: string;
@@ -139,15 +138,15 @@ export interface Facility {
           }[];
           id?: string;
           blockName?: string;
-          blockType: "faciReadingRoom";
+          blockType: 'faciReadingRoom';
         }
       | {
           content: {
             label?: string;
-            type?: "price" | "files" | "contacts";
+            type?: 'price' | 'files' | 'contacts';
             price: {
               servicePrice?: string;
-              unit?: "eur" | "eurh";
+              unit?: 'eur' | 'eurh';
               description?: string;
             };
             files: {
@@ -167,13 +166,12 @@ export interface Facility {
           }[];
           id?: string;
           blockName?: string;
-          blockType: "faciOther";
+          blockType: 'faciOther';
         }
     )[];
     id?: string;
   }[];
 }
-
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "images".
@@ -199,6 +197,22 @@ export interface Image {
   };
   createdAt: string;
   updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team".
+ */
+export interface Team {
+  id: string;
+  members: {
+    firstName?: string;
+    lastName?: string;
+    position?: string;
+    email?: string;
+    phone?: string;
+    image?: string | Image;
+    id?: string;
+  }[];
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -232,14 +246,7 @@ export interface Project {
   id: string;
   slug?: string;
   title: string;
-  type?:
-    | "residency"
-    | "exhibition"
-    | "education"
-    | "sound"
-    | "event"
-    | "screening"
-    | "massEvent";
+  type?: 'residency' | 'exhibition' | 'education' | 'sound' | 'event' | 'screening' | 'massEvent';
   start?: string;
   end?: string;
   description?: string;
@@ -256,7 +263,7 @@ export interface Project {
     }[];
     id?: string;
     blockName?: string;
-    blockType: "participants";
+    blockType: 'participants';
   }[];
   tags?: string[] | Tag[];
   meta: {

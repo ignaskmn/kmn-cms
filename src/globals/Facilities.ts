@@ -4,7 +4,7 @@ import FaciReadingRoom from "../blocks/facilities/FaciReadingRoom";
 import FaciOther from "../blocks/facilities/FaciOther";
 import FaciRooms from "../blocks/facilities/FaciRooms";
 
-const Services: GlobalConfig = {
+const Facilities: GlobalConfig = {
   slug: "facilities",
   label: { en: "Facilities", lt: "Paslaugos" },
   access: {
@@ -46,4 +46,4 @@ const Services: GlobalConfig = {
   ],
 };
 
-export default Services;
+export default Facilities;

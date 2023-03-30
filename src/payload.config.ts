@@ -4,7 +4,6 @@ import seo from "@payloadcms/plugin-seo";
 import Users from "./collections/Users";
 import Examples from "./collections/Examples";
 import Images from "./collections/Images";
-import Information from "./globals/Information";
 import Tags from "./collections/Tags";
 import Documents from "./collections/Documents";
 import Projects from "./collections/Projects";
@@ -12,6 +11,8 @@ import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
 import AdminIcon from "./components/AdminGraphics/adminIcon";
 import Facilities from "./globals/Facilities";
+import Information from "./globals/Information";
+import Team from "./globals/Team";
 
 export default buildConfig({
   // serverURL: "https://tvs.kmn.lt",
@@ -31,7 +32,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Examples, Projects, Images, Documents, Tags],
-  globals: [Menu, Information, Facilities],
+  globals: [Menu, Information, Facilities, Team],
   localization: {
     locales: ["lt", "en"],
     defaultLocale: "lt",
