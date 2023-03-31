@@ -265,6 +265,32 @@ export interface Project {
     blockName?: string;
     blockType: 'participants';
   }[];
+  events: {
+    childName?: string;
+    event?: string | Event;
+    id?: string;
+  }[];
+  tags?: string[] | Tag[];
+  meta: {
+    title?: string;
+    description?: string;
+    image?: string | Image;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: string;
+  slug?: string;
+  title: string;
+  start?: string;
+  description?: string;
+  image9x16: string | Image;
+  image1x1?: string | Image;
   tags?: string[] | Tag[];
   meta: {
     title?: string;

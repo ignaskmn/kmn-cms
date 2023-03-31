@@ -1,5 +1,5 @@
 import { Block } from 'payload/types';
-import { Type as PersonCollapseType } from "../blocks/PersonCollapse";
+import { Type as PersonCollapseType } from "../PersonCollapse";
 
 export type Type = {
   slug: string;

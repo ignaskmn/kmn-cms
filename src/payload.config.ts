@@ -7,6 +7,7 @@ import Images from "./collections/Images";
 import Tags from "./collections/Tags";
 import Documents from "./collections/Documents";
 import Projects from "./collections/Projects";
+import Events from "./collections/Events";
 import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
 import AdminIcon from "./components/AdminGraphics/adminIcon";
@@ -31,7 +32,7 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Examples, Projects, Images, Documents, Tags],
+  collections: [Users, Examples, Projects, Events, Images, Documents, Tags],
   globals: [Menu, Information, Facilities, Team],
   localization: {
     locales: ["lt", "en"],
@@ -40,12 +41,15 @@ export default buildConfig({
   },
   plugins: [
     seo({
-      collections: ["projects"],
+      collections: ["projects", "events"],
       uploadsCollection: "images",
       generateTitle: ({ doc }: any) =>
-        `Kauno Menininkų Namai - ${doc?.title?.value}`,
+        `${doc?.title?.value} - Kauno Menininkų Namai`,
       generateDescription: ({ doc }: any) =>
-        `${doc?.description?.value.substring(0, 144)} (...)`,
+        `${doc?.description.initialValue[0].children[0].text.substring(
+          0,
+          145
+        )}(...)`,
       generateImage: ({ doc }: any) => doc?.image9x16?.value,
     }),
   ],

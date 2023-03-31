@@ -1,6 +1,9 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
-import { Participants, Type as ParticipantsType } from "../blocks/Participants";
+import {
+  Participants,
+  Type as ParticipantsType,
+} from "../blocks/projects/Participants";
 import { Type as TagsType } from "./Tags";
 
 export type Type = {
@@ -147,7 +150,11 @@ export const Projects: CollectionConfig = {
             {
               name: "description",
               label: "Description",
-              type: "textarea",
+              type: "richText",
+              admin: {
+                elements: ["link", "ol", "ul"],
+                leaves: ["bold", "italic", "underline"],
+              },
               localized: true,
             },
             {
@@ -173,6 +180,39 @@ export const Projects: CollectionConfig = {
               label: "Activity Layout",
               type: "blocks",
               blocks: [Participants],
+            },
+          ],
+        },
+        {
+          label: "Events",
+          fields: [
+            {
+              name: "events",
+              label: "Events",
+              type: "array",
+              admin: {
+                components: {
+                  RowLabel: ({ data, index }: any) => {
+                    return (
+                      data?.childName ||
+                      `Event ${String(index).padStart(2, "0")}`
+                    );
+                  },
+                },
+              },
+              fields: [
+                {
+                  name: "childName",
+                  label: "Child Name",
+                  type: "text",
+                },
+                {
+                  name: "event",
+                  label: "Event",
+                  type: "relationship",
+                  relationTo: "events",
+                },
+              ],
             },
           ],
         },
