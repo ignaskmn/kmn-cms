@@ -13,9 +13,9 @@ export type Type = {
     | "residency"
     | "exhibition"
     | "education"
-    | "concert"
+    | "sound"
     | "event"
-    | "screening"
+    | "screen"
     | "massEvent";
   start: string;
   end?: string;
@@ -86,8 +86,8 @@ export const Projects: CollectionConfig = {
                   value: "event",
                 },
                 {
-                  label: { lt: "Screening", en: "Peržiūra" },
-                  value: "screening",
+                  label: { lt: "Screen", en: "Ekranas" },
+                  value: "screen",
                 },
                 {
                   label: { lt: "Mass Event", en: "Didelis Renginys" },
@@ -102,7 +102,9 @@ export const Projects: CollectionConfig = {
                 condition: (_, { type } = {}) =>
                   type === "residency" ||
                   type === "exhibition" ||
-                  type === "education",
+                  type === "education" ||
+                  type === "sound" ||
+                  type === "screen",
               },
               fields: [
                 {
@@ -134,10 +136,7 @@ export const Projects: CollectionConfig = {
               type: "row",
               admin: {
                 condition: (_, { type } = {}) =>
-                  type === "sound" ||
-                  type === "event" ||
-                  type === "screening" ||
-                  type === "massEvent",
+                  type === "event" || type === "massEvent",
               },
               fields: [
                 {
@@ -205,12 +204,47 @@ export const Projects: CollectionConfig = {
                   name: "childName",
                   label: "Child Name",
                   type: "text",
+                  localized: true,
                 },
                 {
                   name: "event",
                   label: "Event",
                   type: "relationship",
                   relationTo: "events",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "News",
+          fields: [
+            {
+              name: "news",
+              label: "News",
+              type: "array",
+              admin: {
+                components: {
+                  RowLabel: ({ data, index }: any) => {
+                    return (
+                      data?.childName ||
+                      `News Item ${String(index).padStart(2, "0")}`
+                    );
+                  },
+                },
+              },
+              fields: [
+                {
+                  name: "childName",
+                  label: "Child Name",
+                  type: "text",
+                  localized: true,
+                },
+                {
+                  name: "news",
+                  label: "News Item",
+                  type: "relationship",
+                  relationTo: "news",
                 },
               ],
             },

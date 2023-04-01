@@ -7,7 +7,7 @@ const Events: CollectionConfig = {
     useAsTitle: "title",
   },
   access: {
-    read: () => true,
+    read: (): boolean => true, // Everyone can read Pages
   },
   fields: [
     {
