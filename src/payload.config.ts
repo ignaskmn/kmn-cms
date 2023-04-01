@@ -8,6 +8,7 @@ import Tags from "./collections/Tags";
 import Documents from "./collections/Documents";
 import Projects from "./collections/Projects";
 import Events from "./collections/Events";
+import News from "./collections/News";
 import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
 import AdminIcon from "./components/AdminGraphics/adminIcon";
@@ -32,7 +33,16 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Examples, Projects, Events, Images, Documents, Tags],
+  collections: [
+    Users,
+    Examples,
+    Projects,
+    Events,
+    News,
+    Images,
+    Documents,
+    Tags,
+  ],
   globals: [Menu, Information, Facilities, Team],
   localization: {
     locales: ["lt", "en"],
@@ -41,7 +51,7 @@ export default buildConfig({
   },
   plugins: [
     seo({
-      collections: ["projects", "events"],
+      collections: ["projects", "events", "news"],
       uploadsCollection: "images",
       generateTitle: ({ doc }: any) =>
         `${doc?.title?.value} - Kauno Menininkų Namai`,

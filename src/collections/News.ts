@@ -1,8 +1,8 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
 
-const Events: CollectionConfig = {
-  slug: "events",
+const News: CollectionConfig = {
+  slug: "news",
   admin: {
     useAsTitle: "title",
   },
@@ -31,15 +31,10 @@ const Events: CollectionConfig = {
           fields: [
             {
               name: "title",
-              label: { en: "Event Title", lt: "Renginio Pavadinimas" },
+              label: { en: "News Title", lt: "Naujienos Pavadinimas" },
               type: "text",
               required: true,
               localized: true,
-            },
-            {
-              name: "start",
-              label: { en: "Date and time", lt: "Data ir laikas" },
-              type: "date",
             },
             {
               name: "description",
@@ -84,4 +79,4 @@ const Events: CollectionConfig = {
   ],
 };
 
-export default Events;
+export default News;
