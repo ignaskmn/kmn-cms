@@ -13,7 +13,7 @@ export type Type = {
 
 export const Collapse: Block = {
     slug: 'collapse',
-    imageURL: 'http://localhost:3000/assets/blocks/collapse.png',
+    imageURL: 'https://tvs.kmn.lt/assets/blocks/collapse.png',
     labels: {
         singular: 'Collapse',
         plural: 'Collapse Blocks'

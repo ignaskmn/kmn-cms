@@ -13,7 +13,7 @@ export interface Config {}
 export interface Featured {
   id: string;
   items: {
-    type?: 'news' | 'event' | 'project';
+    type?: 'news' | 'events' | 'projects';
     item?: string | Project;
     id?: string;
   }[];
@@ -26,7 +26,7 @@ export interface Project {
   id: string;
   slug?: string;
   title: string;
-  type?: 'residency' | 'exhibition' | 'education' | 'sound' | 'event' | 'screen' | 'massEvent';
+  type: 'residency' | 'exhibition' | 'education' | 'sound' | 'event' | 'screen' | 'massEvent';
   start?: string;
   end?: string;
   description?: {
@@ -34,19 +34,31 @@ export interface Project {
   }[];
   image9x16: string | Image;
   image1x1?: string | Image;
-  layout: {
-    title?: string;
-    participants: {
-      firstName?: string;
-      lastName?: string;
-      nationality?: string;
-      bio?: string;
-      id?: string;
-    }[];
-    id?: string;
-    blockName?: string;
-    blockType: 'participants';
-  }[];
+  layout: (
+    | {
+        title?: string;
+        participants: {
+          firstName?: string;
+          lastName?: string;
+          nationality?: string;
+          bio?: {
+            [k: string]: unknown;
+          }[];
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'participants';
+      }
+    | {
+        content?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'richText';
+      }
+  )[];
   events: {
     childName?: string;
     event?: string | Event;
@@ -106,6 +118,23 @@ export interface Event {
   }[];
   image9x16: string | Image;
   image1x1: string | Image;
+  venue?: string;
+  address?: string;
+  layout: {
+    title?: string;
+    participants: {
+      firstName?: string;
+      lastName?: string;
+      nationality?: string;
+      bio?: {
+        [k: string]: unknown;
+      }[];
+      id?: string;
+    }[];
+    id?: string;
+    blockName?: string;
+    blockType: 'participants';
+  }[];
   tags?: string[] | Tag[];
   meta: {
     title?: string;
@@ -356,6 +385,32 @@ export interface IncomeTax {
   id: string;
   subtitle?: string;
   description?: {
+    [k: string]: unknown;
+  }[];
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  socials: {
+    linkName?: string;
+    link?: string;
+    id?: string;
+  }[];
+  requisites?: {
+    [k: string]: unknown;
+  }[];
+  hours?: {
+    [k: string]: unknown;
+  }[];
+  contacts: {
+    address?: string;
+    email?: string;
+    phone?: string;
+  };
+  additional?: {
     [k: string]: unknown;
   }[];
 }

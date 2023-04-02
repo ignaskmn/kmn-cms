@@ -8,7 +8,7 @@ export type Type = {
 
 export const RichText: Block = {
   slug: 'richText',
-  imageURL: 'http://localhost:3000/assets/blocks/richText.png',
+  imageURL: 'https://tvs.kmn.lt/assets/blocks/richText.png',
   labels: {
     singular: 'Rich Text',
     plural: 'Rich Text Blocks',

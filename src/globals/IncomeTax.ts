@@ -2,7 +2,7 @@ import { GlobalConfig } from "payload/types";
 
 const IncomeTax: GlobalConfig = {
   slug: "income-tax",
-  label: { en: "Income tax", lt: "Parama" },
+  label: { en: "Contribute", lt: "Parama" },
   access: {
     read: (): boolean => true, // Everyone can read Tean
   },

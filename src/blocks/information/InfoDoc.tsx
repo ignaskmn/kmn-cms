@@ -9,7 +9,7 @@ export type Type = {
 export const InfoDocDownload: Block = {
     slug: 'infoDoc',
     labels: {singular: "Documents", plural: "Documents"}, 
-    imageURL: 'http://localhost:3000/assets/blocks/document.png',
+    imageURL: 'https://tvs.kmn.lt/assets/blocks/document.png',
     fields: [
         {
             name: "content",

@@ -3,7 +3,7 @@ import { Block } from 'payload/types';
 export const FaciOther: Block = {
     slug: 'faciOther',
     labels: {singular: "Other Facilities", plural: "Other Facilities"}, 
-    imageURL: 'http://localhost:3000/assets/blocks/FaciOther.png',
+    imageURL: 'https://tvs.kmn.lt/assets/blocks/FaciOther.png',
     fields: [
         {
             name: "content",

@@ -9,7 +9,7 @@ export type Type = {
 
 export const Participants: Block = {
     slug: "participants",
-    imageURL: 'http://localhost:3000/assets/blocks/participants.png',
+    imageURL: 'https://tvs.kmn.lt/assets/blocks/participants.png',
     labels: {singular: "Participants", plural: "Participant Blocks"},
     fields: [
         {
@@ -41,8 +41,12 @@ export const Participants: Block = {
                         },
                         {
                             name: "bio",
-                            type: "textarea",
-                            localized: true
+                            type: "richText",
+                            admin: {
+                                elements: ["link", "ol", "ul"],
+                                leaves: ["bold", "italic", "underline"],
+                            },
+                            localized: true,
                         },
                     ]
                 }

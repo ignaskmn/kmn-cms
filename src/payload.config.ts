@@ -19,10 +19,11 @@ import Information from "./globals/Information";
 import Volunteering from "./globals/Volunteering";
 import IncomeTax from "./globals/IncomeTax";
 import Team from "./globals/Team";
+import Footer from "./globals/Footer";
 
 export default buildConfig({
-  // serverURL: "https://tvs.kmn.lt",
-  serverURL: "http://localhost:3000",
+  serverURL: "https://tvs.kmn.lt",
+  // serverURL: "http://localhost:3000",
   admin: {
     user: Users.slug,
     meta: {
@@ -56,6 +57,7 @@ export default buildConfig({
     Team,
     Volunteering,
     IncomeTax,
+    Footer,
   ],
   localization: {
     locales: ["lt", "en"],

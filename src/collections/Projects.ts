@@ -5,6 +5,7 @@ import {
   Type as ParticipantsType,
 } from "../blocks/projects/Participants";
 import { Type as TagsType } from "./Tags";
+import RichText from "../blocks/RichText";
 
 export type Type = {
   slug: string;
@@ -64,6 +65,7 @@ export const Projects: CollectionConfig = {
               name: "type",
               label: { en: "Project Type", lt: "Veiklos Tipas" },
               type: "select",
+              required: true,
               options: [
                 {
                   label: { lt: "Residency", en: "Rezidencija" },
@@ -178,7 +180,7 @@ export const Projects: CollectionConfig = {
               name: "layout",
               label: "Activity Layout",
               type: "blocks",
-              blocks: [Participants],
+              blocks: [Participants, RichText],
             },
           ],
         },

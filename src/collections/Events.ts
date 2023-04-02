@@ -1,5 +1,9 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
+import {
+  Participants,
+  Type as ParticipantsType,
+} from "../blocks/projects/Participants";
 
 const Events: CollectionConfig = {
   slug: "events",
@@ -64,6 +68,30 @@ const Events: CollectionConfig = {
               type: "upload",
               required: true,
               relationTo: "images",
+            },
+          ],
+        },
+        {
+          label: "Location",
+          fields: [
+            {
+              name: "venue",
+              type: "text",
+            },
+            {
+              name: "address",
+              type: "text",
+            },
+          ],
+        },
+        {
+          label: "Layouts",
+          fields: [
+            {
+              name: "layout",
+              label: "Activity Layout",
+              type: "blocks",
+              blocks: [Participants],
             },
           ],
         },

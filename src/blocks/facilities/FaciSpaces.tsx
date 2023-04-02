@@ -3,7 +3,7 @@ import { Block } from 'payload/types';
 export const FaciSpaces: Block = {
     slug: 'faciSpaces',
     labels: {singular: "Spaces", plural: "Spaces"}, 
-    imageURL: 'http://localhost:3000/assets/blocks/FaciSpaces.png',
+    imageURL: 'https://tvs.kmn.lt/assets/blocks/FaciSpaces.png',
     fields: [
         {
             name: "content",

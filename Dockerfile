@@ -1,14 +1,26 @@
-FROM node:18-alpine
+FROM node:18.8-alpine as base
 
-# Create app directory
+FROM base as builder
+
 WORKDIR /home/node/app
+COPY package*.json ./
 
-# Copy all flies from current directory to app directory
 COPY . .
+RUN yarn install
+RUN yarn build
 
-# Install dependencies with yarn
-RUN yarn install && cp /home/node/app/src/assets/Inter.ttf /home/node/app/node_modules/payload/dist/admin/assets/fonts/ && yarn build
+FROM base as runtime
 
-# RUN cp /home/node/app/src/assets/Inter.ttf /home/node/app/node_modules/payload/dist/admin/assets/fonts/
+ENV NODE_ENV=production
+ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
 
-# RUN yarn build
+WORKDIR /home/node/app
+COPY package*.json  ./
+
+RUN yarn install --production
+COPY --from=builder /home/node/app/dist ./dist
+COPY --from=builder /home/node/app/build ./build
+
+EXPOSE 3000
+
+CMD ["node", "dist/server.js"]

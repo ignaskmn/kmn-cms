@@ -9,7 +9,7 @@ export type Type = {
 export const InfoBoxes: Block = {
     slug: 'infoBoxes',
     labels: {singular: "Info Box", plural: "Info Boxes"}, 
-    imageURL: 'http://localhost:3000/assets/blocks/infoBoxes.png',
+    imageURL: 'https://tvs.kmn.lt/assets/blocks/infoBoxes.png',
     fields: [
         {
             name: "content",

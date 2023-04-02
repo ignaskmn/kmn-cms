@@ -3,7 +3,7 @@ import { Block } from 'payload/types';
 export const FaciReadingRoom: Block = {
     slug: 'faciReadingRoom',
     labels: {singular: "Reading Room", plural: "Reading Room"}, 
-    imageURL: 'http://localhost:3000/assets/blocks/FaciReadingRoom.png',
+    imageURL: 'https://tvs.kmn.lt/assets/blocks/FaciReadingRoom.png',
     fields: [
         {
             name: "hours",
