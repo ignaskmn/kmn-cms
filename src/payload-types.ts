@@ -402,9 +402,11 @@ export interface Footer {
   requisites?: {
     [k: string]: unknown;
   }[];
-  hours?: {
-    [k: string]: unknown;
-  }[];
+  hours: {
+    weekdays?: string;
+    friday?: string;
+    administration?: string;
+  };
   contacts: {
     address?: string;
     email?: string;

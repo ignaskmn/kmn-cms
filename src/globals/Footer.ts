@@ -44,12 +44,24 @@ const Footer: GlobalConfig = {
     {
       name: "hours",
       label: { en: "Opening Hours", lt: "Darbo valandos" },
-      type: "richText",
-      admin: {
-        elements: ["link", "ol", "ul"],
-        leaves: ["bold", "italic", "underline"],
-      },
-      localized: true,
+      type: "group",
+      fields: [
+        {
+          name: "weekdays",
+          label: { en: "Weekdays", lt: "Darbo dienos" },
+          type: "text",
+        },
+        {
+          name: "friday",
+          label: { en: "Friday", lt: "Penktadienis" },
+          type: "text",
+        },
+        {
+          name: "administration",
+          label: { en: "Administration", lt: "Administracija" },
+          type: "text",
+        },
+      ],
     },
     {
       name: "contacts",
