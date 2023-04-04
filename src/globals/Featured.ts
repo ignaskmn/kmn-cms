@@ -11,6 +11,7 @@ const Featured: GlobalConfig = {
       name: "items",
       label: { en: "Featured Items", lt: "Svarbūs Įrašai" },
       type: "array",
+      minRows: 4,
       admin: {
         components: {
           RowLabel: ({ index }: any) => {
@@ -33,8 +34,8 @@ const Featured: GlobalConfig = {
           name: "item",
           label: { en: "News Item", lt: "Naujiena" },
           type: "relationship",
-          relationTo: "news",
           maxDepth: 0,
+          relationTo: "news",
           admin: {
             condition: (_, { type } = {}) => type === "news",
           },
@@ -53,8 +54,8 @@ const Featured: GlobalConfig = {
           name: "item",
           label: { en: "Project", lt: "Veikla" },
           type: "relationship",
-          relationTo: "projects",
           maxDepth: 0,
+          relationTo: "projects",
           admin: {
             condition: (_, { type } = {}) => type === "projects",
           },

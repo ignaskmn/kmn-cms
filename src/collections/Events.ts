@@ -1,11 +1,25 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
+import { Type as TagsType } from "./Tags";
 import {
   Participants,
   Type as ParticipantsType,
 } from "../blocks/projects/Participants";
 
-const Events: CollectionConfig = {
+export type Type = {
+  slug: string;
+  title: string;
+  start: string;
+  description: string;
+  image9x16: string;
+  image1x1: string;
+  venue: string;
+  address: string;
+  layout?: ParticipantsType[];
+  tags?: TagsType[];
+};
+
+export const Events: CollectionConfig = {
   slug: "events",
   admin: {
     useAsTitle: "title",
@@ -44,6 +58,7 @@ const Events: CollectionConfig = {
               name: "start",
               label: { en: "Date and time", lt: "Data ir laikas" },
               type: "date",
+              required: true,
             },
             {
               name: "description",
@@ -69,18 +84,39 @@ const Events: CollectionConfig = {
               required: true,
               relationTo: "images",
             },
+            {
+              name: "priority",
+              label: "Sorting Priority",
+              type: "number",
+              localized: true,
+            },
           ],
         },
         {
           label: "Location",
           fields: [
             {
-              name: "venue",
-              type: "text",
+              name: "external",
+              type: "checkbox",
+              label: "External Location",
             },
             {
-              name: "address",
-              type: "text",
+              type: "row",
+              admin: {
+                condition: (_, { external } = {}) => external === true,
+              },
+              fields: [
+                {
+                  name: "venue",
+                  label: "Venue / Location name",
+                  type: "text",
+                },
+                {
+                  name: "address",
+                  label: "Address Link",
+                  type: "text",
+                },
+              ],
             },
           ],
         },

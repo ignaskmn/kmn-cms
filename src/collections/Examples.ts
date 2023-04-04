@@ -15,6 +15,7 @@ const Examples: CollectionConfig = {
       label: "This is a field",
       type: "text",
       localized: true,
+      required: true,
     },
   ],
 };

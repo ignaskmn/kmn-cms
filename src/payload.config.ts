@@ -22,8 +22,8 @@ import Team from "./globals/Team";
 import Footer from "./globals/Footer";
 
 export default buildConfig({
-  serverURL: "https://tvs.kmn.lt",
-  // serverURL: "http://localhost:3000",
+  // serverURL: "https://tvs.kmn.lt",
+  serverURL: "http://localhost:3000",
   admin: {
     user: Users.slug,
     meta: {

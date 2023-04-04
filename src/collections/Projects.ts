@@ -1,10 +1,10 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
+import { Type as TagsType } from "./Tags";
 import {
   Participants,
   Type as ParticipantsType,
 } from "../blocks/projects/Participants";
-import { Type as TagsType } from "./Tags";
 import RichText from "../blocks/RichText";
 
 export type Type = {
@@ -26,7 +26,7 @@ export type Type = {
   tags?: TagsType[];
 };
 
-export const Projects: CollectionConfig = {
+const Projects: CollectionConfig = {
   slug: "projects",
   admin: {
     useAsTitle: "title",
@@ -169,6 +169,7 @@ export const Projects: CollectionConfig = {
               name: "image1x1",
               label: "Featured Image 1 x 1",
               type: "upload",
+              required: true,
               relationTo: "images",
             },
           ],

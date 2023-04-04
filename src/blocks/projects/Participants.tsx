@@ -20,6 +20,16 @@ export const Participants: Block = {
         {
             name: "participants",
             type: "array",
+            admin: {
+                components: {
+                RowLabel: ({ data, index }: any) => {
+                    return (
+                    data?.firstName ||
+                    `Participant ${String(index).padStart(2, "0")}`
+                    );
+                },
+                },
+            },
             fields: [
                         {
                             type: "row",
