@@ -15,16 +15,19 @@ export const InfoDocDownload: Block = {
             name: "content",
             labels: {singular: "Document", plural: "Documents"},
             type: "array",
+            minRows: 1,
             fields: [
                 {
                     name: "label",
-                    type: "text"
+                    type: "text",
+                    required: true
                 },
                 {
                     name: "file",
                     label: "File",
                     type: "upload",
-                    relationTo: "documents"
+                    relationTo: "documents",
+                    required: true
                 }
             ]
         }

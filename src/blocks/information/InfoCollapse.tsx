@@ -14,7 +14,8 @@ export const InfoSmallCollapse: Block = {
     fields: [
         {
             name: "title",
-            type: "text"
+            type: "text",
+            required: true
         },
         {
             name: "content",
@@ -23,13 +24,15 @@ export const InfoSmallCollapse: Block = {
             fields: [
                 {
                     name: "label",
-                    type: "text"
+                    type: "text",
+                    required: true
                 },
                 {
                     name: "file",
                     label: "File",
                     type: "upload",
-                    relationTo: "documents"
+                    relationTo: "documents",
+                    required: true
                 }
             ]
         }

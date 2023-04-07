@@ -16,14 +16,15 @@ import AdminIcon from "./components/AdminGraphics/adminIcon";
 import Featured from "./globals/Featured";
 import Facilities from "./globals/Facilities";
 import Information from "./globals/Information";
+import Partners from "./globals/Partners";
 import Volunteering from "./globals/Volunteering";
 import IncomeTax from "./globals/IncomeTax";
 import Team from "./globals/Team";
 import Footer from "./globals/Footer";
 
 export default buildConfig({
-  // serverURL: "https://tvs.kmn.lt",
-  serverURL: "http://localhost:3000",
+  serverURL: "https://tvs.kmn.lt",
+  // serverURL: "http://localhost:3000",
   admin: {
     user: Users.slug,
     meta: {
@@ -53,6 +54,7 @@ export default buildConfig({
     Featured,
     Menu,
     Information,
+    Partners,
     Facilities,
     Team,
     Volunteering,

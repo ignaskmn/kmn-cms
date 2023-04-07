@@ -14,6 +14,7 @@ export const InfoBoxes: Block = {
         {
             name: "content",
             type: "array",
+            minRows: 1,
             admin: {
                 components: {
                     RowLabel: ({ data, index }: any) => {
@@ -24,13 +25,15 @@ export const InfoBoxes: Block = {
             fields: [
                 {
                     name: "label",
-                    type: "text"
+                    type: "text",
+                    required: true
                 },
                 {
                     name: "file",
                     label: "File",
                     type: "upload",
-                    relationTo: "documents"
+                    relationTo: "documents",
+                    required: true
                 }
             ]
         }
