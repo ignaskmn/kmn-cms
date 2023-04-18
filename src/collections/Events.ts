@@ -58,6 +58,11 @@ export const Events: CollectionConfig = {
               name: "start",
               label: { en: "Date and time", lt: "Data ir laikas" },
               type: "date",
+              admin: {
+                date: {
+                  pickerAppearance: "dayAndTime",
+                },
+              },
               required: true,
             },
             {

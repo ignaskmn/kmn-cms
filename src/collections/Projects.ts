@@ -192,23 +192,7 @@ const Projects: CollectionConfig = {
               name: "events",
               label: "Events",
               type: "array",
-              admin: {
-                components: {
-                  RowLabel: ({ data, index }: any) => {
-                    return (
-                      data?.childName ||
-                      `Event ${String(index).padStart(2, "0")}`
-                    );
-                  },
-                },
-              },
               fields: [
-                {
-                  name: "childName",
-                  label: "Child Name",
-                  type: "text",
-                  localized: true,
-                },
                 {
                   name: "event",
                   label: "Event",
@@ -226,23 +210,7 @@ const Projects: CollectionConfig = {
               name: "news",
               label: "News",
               type: "array",
-              admin: {
-                components: {
-                  RowLabel: ({ data, index }: any) => {
-                    return (
-                      data?.childName ||
-                      `News Item ${String(index).padStart(2, "0")}`
-                    );
-                  },
-                },
-              },
               fields: [
-                {
-                  name: "childName",
-                  label: "Child Name",
-                  type: "text",
-                  localized: true,
-                },
                 {
                   name: "news",
                   label: "News Item",
