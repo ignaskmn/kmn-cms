@@ -34,6 +34,26 @@ const Images: CollectionConfig = {
         width: 480,
         height: 320,
       },
+      {
+        name: "fb",
+        width: 1920,
+        height: 1005
+      },
+      {
+        name: "square",
+        width: 1080,
+        height: 1080
+      },
+      {
+        name: "fbCard",
+        width: 1080,
+        height: 565
+      },
+      {
+        name: "squareCard",
+        width: 720,
+        height: 720
+      }
     ],
   },
   fields: [

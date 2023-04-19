@@ -2,7 +2,6 @@ import { buildConfig } from "payload/config";
 import path from "path";
 import seo from "@payloadcms/plugin-seo";
 import Users from "./collections/Users";
-import Examples from "./collections/Examples";
 import Images from "./collections/Images";
 import Tags from "./collections/Tags";
 import Documents from "./collections/Documents";
@@ -41,7 +40,6 @@ export default buildConfig({
   },
   collections: [
     Users,
-    Examples,
     Projects,
     Pages,
     Events,
