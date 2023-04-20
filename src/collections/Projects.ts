@@ -198,6 +198,7 @@ const Projects: CollectionConfig = {
                   label: "Event",
                   type: "relationship",
                   relationTo: "events",
+                  required: true
                 },
               ],
             },
@@ -216,6 +217,7 @@ const Projects: CollectionConfig = {
                   label: "News Item",
                   type: "relationship",
                   relationTo: "news",
+                  required: true
                 },
               ],
             },
