@@ -16,6 +16,7 @@ export const Participants: Block = {
             name: "title",
             type: "text",
             localized: true,
+            required: true
         },
         {
             name: "participants",
@@ -30,6 +31,7 @@ export const Participants: Block = {
                 },
                 },
             },
+            minRows: 1,
             fields: [
                         {
                             type: "row",
@@ -37,15 +39,18 @@ export const Participants: Block = {
                                 {
                                     name: "firstName",
                                     type: "text",
+                                    required: true,
                                 },
                                 {
                                     name: "lastName",
                                     type: "text",
+                                    required: true,
                                 },
                             ]
                         },
                         {
                             name: "nationality",
+                            label: "Subtext",
                             type: "text",
                             localized: true,
                         },
@@ -57,6 +62,7 @@ export const Participants: Block = {
                                 leaves: ["bold", "italic", "underline"],
                             },
                             localized: true,
+                            required: true
                         },
                     ]
                 }

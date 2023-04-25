@@ -23,12 +23,14 @@ const Partners: GlobalConfig = {
           name: "link",
           label: { en: "Link", lt: "Nuoroda" },
           type: "text",
+          required: true
         },
         {
           name: "image",
           label: { en: "Logo", lt: "Logotipas" },
           type: "upload",
           relationTo: "images",
+          required: true
         },
       ],
     },

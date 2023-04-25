@@ -19,6 +19,7 @@ import Partners from "./globals/Partners";
 import Volunteering from "./globals/Volunteering";
 import Team from "./globals/Team";
 import Footer from "./globals/Footer";
+import Ucbanner from "./globals/Ucbanner";
 
 export default buildConfig({
   // serverURL: "https://tvs.kmn.lt",
@@ -57,6 +58,7 @@ export default buildConfig({
     Team,
     Volunteering,
     Footer,
+    Ucbanner,
   ],
   localization: {
     locales: ["lt", "en"],
