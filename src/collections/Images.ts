@@ -28,6 +28,12 @@ const Images: CollectionConfig = {
     adminThumbnail: "thumbnail",
     staticDir: path.resolve(__dirname, "../../uploads/images"),
     mimeTypes: ["image/png", "image/jpeg"],
+    formatOptions: {
+      format: "jpeg" || "png",
+      options: {
+        quality: 100,
+      }
+    },
     imageSizes: [
       {
         name: "thumbnail",
@@ -35,14 +41,42 @@ const Images: CollectionConfig = {
         height: 320,
       },
       {
+        name: "full",
+        width: 2160,
+        height: 1130,
+        formatOptions: {
+          format: "jpeg" || "png",
+          options: {
+            quality: 100,
+          }
+        },
+      },
+      {
         name: "fb",
         width: 1920,
-        height: 1005
+        height: 1005,
+        formatOptions: {
+          format: "jpeg" || "png",
+          options: {
+            quality: 95,
+          }
+        },
       },
       {
         name: "square",
         width: 1080,
         height: 1080
+      },
+      {
+        name: "card",
+        width: 1080,
+        height: 565,
+        formatOptions: {
+          format: "jpeg" || "png",
+          options: {
+            quality: 95,
+          }
+        },
       },
       {
         name: "fbCard",
