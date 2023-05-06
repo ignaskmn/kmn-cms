@@ -74,6 +74,7 @@ const Team: GlobalConfig = {
           label: { en: "Image", lt: "Nuotrauka" },
           type: "upload",
           relationTo: "images",
+          required: true
         },
       ],
     },

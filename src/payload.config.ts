@@ -20,6 +20,7 @@ import Volunteering from "./globals/Volunteering";
 import Team from "./globals/Team";
 import Footer from "./globals/Footer";
 import Ucbanner from "./globals/Ucbanner";
+import { LexicalPlugin } from "payload-plugin-lexical";
 
 export default buildConfig({
   // serverURL: "https://tvs.kmn.lt",
@@ -72,12 +73,14 @@ export default buildConfig({
       generateTitle: ({ doc }: any) =>
         `${doc?.title?.value} - Kauno Menininkų Namai`,
       generateDescription: ({ doc }: any) =>
-        `${doc?.description.initialValue[0].children[0].text.substring(
-          0,
-          145
-        )}(...)`,
-      generateImage: ({ doc }: any) => doc?.image9x16?.value,
+        // `${doc?.description.initialValue[0].children[0].text.substring(
+        //   0,
+        //   145
+        // )}(...)`,
+        `${doc.lexicalRichText.value.preview}`,
+      generateImage: ({ doc }: any) => doc?.image?.value,
     }),
+    LexicalPlugin({}),
   ],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),

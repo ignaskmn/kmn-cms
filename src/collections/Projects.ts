@@ -1,5 +1,16 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
+import { lexicalRichTextField,
+  EmojisFeature,
+  EmojiPickerFeature,
+  HorizontalRuleFeature,
+  YouTubeFeature,
+  TwitterFeature,
+  ClearEditorFeature,
+  ReadOnlyModeFeature,
+  KeywordsFeature,
+  LinkFeature,
+} from 'payload-plugin-lexical';
 import { Type as TagsType } from "./Tags";
 import {
   Participants,
@@ -15,7 +26,6 @@ export type Type = {
     | "exhibition"
     | "education"
     | "sound"
-    | "event"
     | "screen"
     | "massEvent";
   start: string;
@@ -76,23 +86,19 @@ const Projects: CollectionConfig = {
                   value: "exhibition",
                 },
                 {
-                  label: { lt: "Education", en: "Mokymai" },
+                  label: { lt: "Education", en: "Edukacija" },
                   value: "education",
                 },
                 {
-                  label: { lt: "Sound", en: "Garsas" },
+                  label: { lt: "Sound", en: "Muzika" },
                   value: "sound",
                 },
                 {
-                  label: { lt: "Event", en: "Kitas Renginys" },
-                  value: "event",
-                },
-                {
-                  label: { lt: "Screen", en: "Ekranas" },
+                  label: { lt: "Screen", en: "Kinas" },
                   value: "screen",
                 },
                 {
-                  label: { lt: "Mass Event", en: "Didelis Renginys" },
+                  label: { lt: "Mass Event", en: "Miesto Kultūra" },
                   value: "massEvent",
                 },
               ],
@@ -138,7 +144,7 @@ const Projects: CollectionConfig = {
               type: "row",
               admin: {
                 condition: (_, { type } = {}) =>
-                  type === "event" || type === "massEvent",
+                  type === "massEvent",
               },
               fields: [
                 {
@@ -148,6 +154,33 @@ const Projects: CollectionConfig = {
                 },
               ],
             },
+            lexicalRichTextField({
+              name: 'lexicalRichText',
+              label: 'Description',
+              localized: true,
+              editorConfigModifier: (defaultEditorConfig) => {
+                defaultEditorConfig.debug = false;
+                defaultEditorConfig.toggles.textColor.enabled = false;
+                defaultEditorConfig.toggles.textBackground.enabled = false;
+                defaultEditorConfig.toggles.fontSize.enabled = false;
+                defaultEditorConfig.toggles.font.enabled = false;
+                defaultEditorConfig.toggles.align.enabled = false;
+        
+                defaultEditorConfig.features = [
+                  EmojisFeature({}), // Adds new Emoji nodes with new, different-looking emojis
+                  EmojiPickerFeature({}), // Use in combination with EmojisPlugin. When you start typing ":" it will show you different emojis you can use. They also look different!
+                  HorizontalRuleFeature({}), // Horizontal rule in the editor.
+                  YouTubeFeature({}), // YouTube Embed
+                  TwitterFeature({}), // Twitter Embed
+                  ClearEditorFeature({}), // Adds a button in the action menu which clears the editor
+                  ReadOnlyModeFeature({}), // Acion button: toggle read-only mode on or off
+                  KeywordsFeature({}), // Highlights certain words
+                  LinkFeature({}), // Obvious: hyperlinks! This includes the AutoLink plugin.
+                ];
+        
+                return defaultEditorConfig;
+              }
+            }),
             {
               name: "description",
               label: "Description",
@@ -159,19 +192,24 @@ const Projects: CollectionConfig = {
               localized: true,
             },
             {
-              name: "image9x16",
-              label: "Featured Image 9 x 16",
+              name: "image",
+              label: "Main Image",
               type: "upload",
-              required: true,
               relationTo: "images",
             },
             {
-              name: "image1x1",
-              label: "Featured Image 1 x 1",
+              name: "image9x16",
+              label: "Featured Image 9 x 16",
               type: "upload",
-              required: true,
               relationTo: "images",
             },
+            // {
+            //   name: "image1x1",
+            //   label: "Featured Image 1 x 1",
+            //   type: "upload",
+            //   required: true,
+            //   relationTo: "images",
+            // },
           ],
         },
         {

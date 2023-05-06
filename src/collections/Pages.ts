@@ -34,17 +34,18 @@ export const Pages: CollectionConfig = {
       localized: true,
     },
     {
-      name: "image9x16",
-      label: "Featured Image 9 x 16",
+      name: "image",
+      label: "Image",
       type: "upload",
       relationTo: "images",
     },
     {
-      name: "image1x1",
-      label: "Featured Image 1 x 1",
+      name: "image9x16",
+      label: "Legacy Image 9 x 16",
       type: "upload",
       relationTo: "images",
     },
+
   ],
 };
 

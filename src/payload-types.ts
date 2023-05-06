@@ -5,23 +5,41 @@
  * and re-run `payload generate:types` to regenerate this file.
  */
 
-export interface Config {}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "featured".
- */
-export interface Featured {
-  id: string;
-  items: {
-    type?: 'news' | 'events' | 'projects';
-    item?: string | Project;
-    id?: string;
-  }[];
+export interface Config {
+  collections: {
+    users: User;
+    projects: Project;
+    pages: Page;
+    events: Event;
+    news: News;
+    images: Image;
+    documents: Document;
+    lexical: Lexical;
+    tags: Tag;
+  };
+  globals: {
+    featured: Featured;
+    menu: Menu;
+    information: Information;
+    partners: Partner;
+    facilities: Facility;
+    team: Team;
+    volunteering: Volunteering;
+    footer: Footer;
+    ucbanner: Ucbanner;
+  };
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "projects".
- */
+export interface User {
+  id: string;
+  email?: string;
+  resetPasswordToken?: string;
+  resetPasswordExpiration?: string;
+  loginAttempts?: number;
+  lockUntil?: string;
+  createdAt: string;
+  updatedAt: string;
+  password?: string;
+}
 export interface Project {
   id: string;
   slug?: string;
@@ -32,16 +50,16 @@ export interface Project {
   description?: {
     [k: string]: unknown;
   }[];
-  image9x16: string | Image;
-  image1x1?: string | Image;
-  layout: (
+  image?: string | Image;
+  image9x16?: string | Image;
+  layout?: (
     | {
-        title?: string;
+        title: string;
         participants: {
-          firstName?: string;
-          lastName?: string;
+          firstName: string;
+          lastName: string;
           nationality?: string;
-          bio?: {
+          bio: {
             [k: string]: unknown;
           }[];
           id?: string;
@@ -60,17 +78,15 @@ export interface Project {
       }
   )[];
   events: {
-    childName?: string;
-    event?: string | Event;
+    event: string | Event;
     id?: string;
   }[];
   news: {
-    childName?: string;
-    news?: string | News;
+    news: string | News;
     id?: string;
   }[];
   tags?: string[] | Tag[];
-  meta: {
+  meta?: {
     title?: string;
     description?: string;
     image?: string | Image;
@@ -78,10 +94,6 @@ export interface Project {
   createdAt: string;
   updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "images".
- */
 export interface Image {
   id: string;
   alt: string;
@@ -91,8 +103,56 @@ export interface Image {
   filesize?: number;
   width?: number;
   height?: number;
-  sizes: {
-    thumbnail: {
+  sizes?: {
+    thumbnail?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    full?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    fb?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    square?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    card?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    fbCard?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    squareCard?: {
       url?: string;
       width?: number;
       height?: number;
@@ -104,29 +164,27 @@ export interface Image {
   createdAt: string;
   updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "events".
- */
 export interface Event {
   id: string;
   slug?: string;
   title: string;
-  start?: string;
+  start: string;
   description?: {
     [k: string]: unknown;
   }[];
-  image9x16: string | Image;
-  image1x1: string | Image;
+  image?: string | Image;
+  image9x16?: string | Image;
+  priority?: number;
+  external?: boolean;
   venue?: string;
   address?: string;
-  layout: {
-    title?: string;
+  layout?: {
+    title: string;
     participants: {
-      firstName?: string;
-      lastName?: string;
+      firstName: string;
+      lastName: string;
       nationality?: string;
-      bio?: {
+      bio: {
         [k: string]: unknown;
       }[];
       id?: string;
@@ -136,7 +194,7 @@ export interface Event {
     blockType: 'participants';
   }[];
   tags?: string[] | Tag[];
-  meta: {
+  meta?: {
     title?: string;
     description?: string;
     image?: string | Image;
@@ -144,31 +202,25 @@ export interface Event {
   createdAt: string;
   updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags".
- */
 export interface Tag {
   id: string;
   tag?: string;
   createdAt: string;
   updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "news".
- */
 export interface News {
   id: string;
   slug?: string;
   title: string;
+  lexicalRichText?: {
+    [k: string]: unknown;
+  }[];
   description?: {
     [k: string]: unknown;
   }[];
-  image9x16: string | Image;
-  image1x1: string | Image;
+  image: string | Image;
   tags?: string[] | Tag[];
-  meta: {
+  meta?: {
     title?: string;
     description?: string;
     image?: string | Image;
@@ -176,17 +228,58 @@ export interface News {
   createdAt: string;
   updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "menu".
- */
+export interface Page {
+  id: string;
+  title: string;
+  slug: string;
+  description?: {
+    [k: string]: unknown;
+  }[];
+  image?: string | Image;
+  image9x16?: string | Image;
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: string | Image;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Document {
+  id: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Lexical {
+  id: string;
+  title: string;
+  lexicalRichTextEditor?: {
+    [k: string]: unknown;
+  }[];
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Featured {
+  id: string;
+  items?: {
+    type?: 'news' | 'events' | 'projects';
+    item?: string | Project;
+    id?: string;
+  }[];
+}
 export interface Menu {
   id: string;
-  menuItems: {
+  menuItems?: {
     label?: string;
     slug?: string;
     submenu?: boolean;
-    submenuItems: {
+    submenuItems?: {
       label?: string;
       slug?: string;
       id?: string;
@@ -194,19 +287,15 @@ export interface Menu {
     id?: string;
   }[];
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "information".
- */
 export interface Information {
   id: string;
   informationBlocks: {
     title: string;
-    layout: (
+    layout?: (
       | {
           content: {
-            label?: string;
-            file?: string | Document;
+            label: string;
+            file: string | Document;
             id?: string;
           }[];
           id?: string;
@@ -222,10 +311,10 @@ export interface Information {
           blockType: 'richText';
         }
       | {
-          title?: string;
+          title: string;
           content: {
-            label?: string;
-            file?: string | Document;
+            label: string;
+            file: string | Document;
             id?: string;
           }[];
           id?: string;
@@ -234,8 +323,8 @@ export interface Information {
         }
       | {
           content: {
-            label?: string;
-            file?: string | Document;
+            label: string;
+            file: string | Document;
             id?: string;
           }[];
           id?: string;
@@ -246,32 +335,21 @@ export interface Information {
     id?: string;
   }[];
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "documents".
- */
-export interface Document {
+export interface Partner {
   id: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
-  createdAt: string;
-  updatedAt: string;
+  partners: {
+    link: string;
+    image: string | Image;
+    id?: string;
+  }[];
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "facilities".
- */
 export interface Facility {
   id: string;
   facilityBlocks: {
     title: string;
-    layout: (
+    layout?: (
       | {
-          content: {
+          content?: {
             label?: string;
             image1x1?: string | Image;
             id?: string;
@@ -299,7 +377,7 @@ export interface Facility {
           hours?: string;
           email?: string;
           phone?: string;
-          content: {
+          content?: {
             label?: string;
             description?: {
               [k: string]: unknown;
@@ -311,22 +389,22 @@ export interface Facility {
           blockType: 'faciReadingRoom';
         }
       | {
-          content: {
+          content?: {
             label?: string;
             type?: 'price' | 'files' | 'contacts';
-            price: {
+            price?: {
               servicePrice?: string;
               unit?: 'eur' | 'eurh';
               description?: string;
             };
-            files: {
-              content: {
+            files?: {
+              content?: {
                 label?: string;
                 file?: string | Document;
                 id?: string;
               }[];
             };
-            contacts: {
+            contacts?: {
               name?: string;
               surname?: string;
               email?: string;
@@ -342,10 +420,6 @@ export interface Facility {
     id?: string;
   }[];
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "team".
- */
 export interface Team {
   id: string;
   members: {
@@ -354,20 +428,16 @@ export interface Team {
     position?: string;
     email?: string;
     phone?: string;
-    image?: string | Image;
+    image: string | Image;
     id?: string;
   }[];
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "volunteering".
- */
 export interface Volunteering {
   id: string;
-  columns: {
+  columns?: {
     label?: string;
     description?: string;
-    collapse: {
+    collapse?: {
       label?: string;
       description?: {
         [k: string]: unknown;
@@ -377,24 +447,9 @@ export interface Volunteering {
     id?: string;
   }[];
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "income-tax".
- */
-export interface IncomeTax {
-  id: string;
-  subtitle?: string;
-  description?: {
-    [k: string]: unknown;
-  }[];
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer".
- */
 export interface Footer {
   id: string;
-  socials: {
+  socials?: {
     linkName?: string;
     link?: string;
     id?: string;
@@ -402,12 +457,12 @@ export interface Footer {
   requisites?: {
     [k: string]: unknown;
   }[];
-  hours: {
+  hours?: {
     weekdays?: string;
     friday?: string;
     administration?: string;
   };
-  contacts: {
+  contacts?: {
     address?: string;
     email?: string;
     phone?: string;
@@ -416,48 +471,9 @@ export interface Footer {
     [k: string]: unknown;
   }[];
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
+export interface Ucbanner {
   id: string;
-  email?: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "examples".
- */
-export interface Example {
-  id: string;
-  thisIsAField?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
- */
-export interface Page {
-  id: string;
-  title: string;
-  slug: string;
-  description?: {
-    [k: string]: unknown;
-  }[];
-  image9x16?: string | Image;
-  image1x1?: string | Image;
-  meta: {
-    title?: string;
-    description?: string;
-    image?: string | Image;
-  };
-  createdAt: string;
-  updatedAt: string;
+  message: string;
+  textColor: string;
+  backgroundColor: string;
 }
