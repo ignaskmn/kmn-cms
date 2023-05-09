@@ -39,13 +39,6 @@ export const Pages: CollectionConfig = {
       type: "upload",
       relationTo: "images",
     },
-    {
-      name: "image9x16",
-      label: "Legacy Image 9 x 16",
-      type: "upload",
-      relationTo: "images",
-    },
-
   ],
 };
 
