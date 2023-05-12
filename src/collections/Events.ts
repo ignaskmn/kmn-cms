@@ -125,13 +125,6 @@ export const Events: CollectionConfig = {
               type: "upload",
               relationTo: "images",
             },
-            // {
-            //   name: "image1x1",
-            //   label: "Featured Image 1 x 1",
-            //   type: "upload",
-            //   required: true,
-            //   relationTo: "images",
-            // },
             {
               name: "priority",
               label: "Sorting Priority",

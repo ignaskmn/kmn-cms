@@ -20,6 +20,7 @@ import Volunteering from "./globals/Volunteering";
 import Team from "./globals/Team";
 import Footer from "./globals/Footer";
 import Ucbanner from "./globals/Ucbanner";
+import Cookies from "./globals/Cookies";
 import { LexicalPlugin } from "payload-plugin-lexical";
 
 export default buildConfig({
@@ -60,6 +61,7 @@ export default buildConfig({
     Volunteering,
     Footer,
     Ucbanner,
+    Cookies
   ],
   localization: {
     locales: ["lt", "en"],

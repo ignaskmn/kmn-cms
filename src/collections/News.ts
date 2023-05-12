@@ -9,8 +9,6 @@ import { lexicalRichTextField,
   ClearEditorFeature,
   ReadOnlyModeFeature,
   KeywordsFeature,
-  AutoCompleteFeature,
-  CollapsibleFeature,
   LinkFeature,
 } from 'payload-plugin-lexical';
 

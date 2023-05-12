@@ -1,5 +1,6 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
+import { recurring } from "../fields/recurring";
 import { lexicalRichTextField,
   EmojisFeature,
   EmojiPickerFeature,
@@ -105,7 +106,8 @@ const Projects: CollectionConfig = {
             },
             // Show start and end date fields only if type is residency, exhibition or education
             {
-              type: "row",
+              type: "group",
+              name: "duration",
               admin: {
                 condition: (_, { type } = {}) =>
                   type === "residency" ||
@@ -116,30 +118,35 @@ const Projects: CollectionConfig = {
               },
               fields: [
                 {
-                  name: "start",
-                  label: { en: "Start Date", lt: "Pradžios Data" },
-                  type: "date",
-                  admin: {
-                    width: "50%",
-                    date: {
-                      pickerAppearance: "dayOnly",
+                  type: "row",
+                  fields: [
+                    {
+                      name: "start",
+                      label: { en: "Start Date", lt: "Pradžios Data" },
+                      type: "date",
+                      admin: {
+                        width: "50%",
+                        date: {
+                          pickerAppearance: "dayOnly",
+                        },
+                      },
                     },
-                  },
-                },
-                {
-                  name: "end",
-                  label: { en: "End Date", lt: "Pabaigos Data" },
-                  type: "date",
-                  admin: {
-                    width: "50%",
-                    date: {
-                      pickerAppearance: "dayOnly",
+                    {
+                      name: "end",
+                      label: { en: "End Date", lt: "Pabaigos Data" },
+                      type: "date",
+                      admin: {
+                        width: "50%",
+                        date: {
+                          pickerAppearance: "dayOnly",
+                        },
+                      },
                     },
-                  },
+                  ],
                 },
-              ],
+                recurring
+              ]
             },
-
             {
               type: "row",
               admin: {
@@ -188,7 +195,7 @@ const Projects: CollectionConfig = {
             }),
             {
               name: "description",
-              label: "Description",
+              label: "Legacy Description",
               type: "richText",
               admin: {
                 elements: ["link", "ol", "ul"],
