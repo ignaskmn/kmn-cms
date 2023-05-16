@@ -125,12 +125,6 @@ export const Events: CollectionConfig = {
               type: "upload",
               relationTo: "images",
             },
-            {
-              name: "priority",
-              label: "Sorting Priority",
-              type: "number",
-              localized: true,
-            },
           ],
         },
         {

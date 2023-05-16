@@ -31,7 +31,7 @@ export const recurring: Field = {
                 fields: [
                   {
                     name: "spanStart",
-                    label: { en: "Week Day", lt: "Savaitės diena" },
+                    label: { en: "From Week Day", lt: "Savaitės diena" },
                     type: "select",
                     admin: {
                       width: "50%",
@@ -70,12 +70,11 @@ export const recurring: Field = {
                   },
                   {
                     name: "spanEnd",
-                    label: { en: "Week Day", lt: "Savaitės diena" },
+                    label: { en: "To Week Day", lt: "Savaitės diena" },
                     type: "select",
                     admin: {
                       width: "50%",
                     },
-                    required: true,
                     options: [
                       {
                         label: { lt: "Pirmadienis", en: "Monday" },

@@ -144,7 +144,7 @@ const Projects: CollectionConfig = {
                     },
                   ],
                 },
-                recurring
+                // recurring
               ]
             },
             {
