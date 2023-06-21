@@ -3,6 +3,7 @@ import RichText from "../blocks/RichText";
 import InfoDoc from "../blocks/information/InfoDoc";
 import InfoCollapse from "../blocks/information/InfoCollapse";
 import InfoBoxes from "../blocks/information/InfoBoxes";
+import TextCollapse from "../blocks/information/TextCollapse";
 
 const Information: GlobalConfig = {
   slug: "information",
@@ -40,8 +41,24 @@ const Information: GlobalConfig = {
           name: "layout",
           label: { en: "Layout", lt: "Išdėstymas" },
           type: "blocks",
-          blocks: [InfoDoc, RichText, InfoCollapse, InfoBoxes],
+          blocks: [InfoDoc, RichText, InfoCollapse, InfoBoxes, TextCollapse],
         },
+        {
+          type: "row",
+          fields: [
+            {
+              name: "alwaysOpen",
+              label: { en: "Always Open", lt: "Visada Atidaryta" },
+              type: "checkbox",
+            },
+            {
+              name: "sortByTitle",
+              label: { en: "Sort By Title", lt: "Rikiuoti Pagal Pavadinimą" },
+              type: "checkbox",
+            }
+          ]
+        },
+
       ],
     },
   ],

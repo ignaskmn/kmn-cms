@@ -1,7 +1,8 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
 import { recurring } from "../fields/recurring";
-import { lexicalRichTextField,
+import {
+  lexicalRichTextField,
   EmojisFeature,
   EmojiPickerFeature,
   HorizontalRuleFeature,
@@ -11,7 +12,7 @@ import { lexicalRichTextField,
   ReadOnlyModeFeature,
   KeywordsFeature,
   LinkFeature,
-} from 'payload-plugin-lexical';
+} from "payload-plugin-lexical";
 import { Type as TagsType } from "./Tags";
 import {
   Participants,
@@ -104,17 +105,15 @@ const Projects: CollectionConfig = {
                 },
               ],
             },
+            {
+              name: "once",
+              type: "checkbox",
+            },
             // Show start and end date fields only if type is residency, exhibition or education
             {
-              type: "group",
-              name: "duration",
+              type: "row",
               admin: {
-                condition: (_, { type } = {}) =>
-                  type === "residency" ||
-                  type === "exhibition" ||
-                  type === "education" ||
-                  type === "sound" ||
-                  type === "screen",
+                condition: (_, { once } = {}) => !once,
               },
               fields: [
                 {
@@ -144,14 +143,13 @@ const Projects: CollectionConfig = {
                     },
                   ],
                 },
-                // recurring
-              ]
+                // recurring,
+              ],
             },
             {
               type: "row",
               admin: {
-                condition: (_, { type } = {}) =>
-                  type === "massEvent",
+                condition: (_, { once } = {}) => once,
               },
               fields: [
                 {
@@ -161,14 +159,14 @@ const Projects: CollectionConfig = {
                   admin: {
                     date: {
                       pickerAppearance: "dayAndTime",
-                    }
-                  }
+                    },
+                  },
                 },
               ],
             },
             lexicalRichTextField({
-              name: 'lexicalRichText',
-              label: 'Description',
+              name: "lexicalRichText",
+              label: "Description",
               localized: true,
               editorConfigModifier: (defaultEditorConfig) => {
                 defaultEditorConfig.debug = false;
@@ -177,7 +175,7 @@ const Projects: CollectionConfig = {
                 defaultEditorConfig.toggles.fontSize.enabled = false;
                 defaultEditorConfig.toggles.font.enabled = false;
                 defaultEditorConfig.toggles.align.enabled = false;
-        
+
                 defaultEditorConfig.features = [
                   EmojisFeature({}), // Adds new Emoji nodes with new, different-looking emojis
                   EmojiPickerFeature({}), // Use in combination with EmojisPlugin. When you start typing ":" it will show you different emojis you can use. They also look different!
@@ -189,9 +187,9 @@ const Projects: CollectionConfig = {
                   KeywordsFeature({}), // Highlights certain words
                   LinkFeature({}), // Obvious: hyperlinks! This includes the AutoLink plugin.
                 ];
-        
+
                 return defaultEditorConfig;
-              }
+              },
             }),
             {
               name: "description",
@@ -248,7 +246,7 @@ const Projects: CollectionConfig = {
                   label: "Event",
                   type: "relationship",
                   relationTo: "events",
-                  required: true
+                  required: true,
                 },
               ],
             },
@@ -267,7 +265,7 @@ const Projects: CollectionConfig = {
                   label: "News Item",
                   type: "relationship",
                   relationTo: "news",
-                  required: true
+                  required: true,
                 },
               ],
             },

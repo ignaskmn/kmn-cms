@@ -42,6 +42,13 @@ const Footer: GlobalConfig = {
       localized: true,
     },
     {
+        name: "resources",
+        label: "Resources for partners",
+        type: "upload",
+        relationTo: "documents",
+        required: true
+    },
+    {
       name: "hours",
       label: { en: "Opening Hours", lt: "Darbo valandos" },
       type: "group",

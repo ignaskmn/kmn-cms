@@ -1,5 +1,4 @@
 import { Block } from 'payload/types';
-import InfoDoc from './InfoDoc';
 
 export type Type = {
     slug: string;
@@ -9,7 +8,7 @@ export type Type = {
 
 export const InfoSmallCollapse: Block = {
     slug: 'infoCollapse',
-    labels: {singular: "Collapse", plural: "Collapse"}, 
+    labels: {singular: "Doc Collapse", plural: "Doc Collapse"}, 
     imageURL: 'https://tvs.kmn.lt/assets/blocks/smallCollapse.png',
     fields: [
         {
