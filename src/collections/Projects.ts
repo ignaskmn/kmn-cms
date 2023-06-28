@@ -1,6 +1,6 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
-import { recurring } from "../fields/recurring";
+import { spans } from "../fields/spans";
 import {
   lexicalRichTextField,
   EmojisFeature,
@@ -106,14 +106,26 @@ const Projects: CollectionConfig = {
               ],
             },
             {
-              name: "once",
-              type: "checkbox",
+              type: "row",
+              fields: [
+                {
+                  name: "ongoing",
+                  type: "checkbox",
+                },
+                {
+                  name: "once",
+                  admin: {
+                    condition: (_, { ongoing } = {}) => !ongoing,
+                  },
+                  type: "checkbox",
+                },
+              ],
             },
             // Show start and end date fields only if type is residency, exhibition or education
             {
               type: "row",
               admin: {
-                condition: (_, { once } = {}) => !once,
+                condition: (_, { once, ongoing } = {}) => !once || ongoing,
               },
               fields: [
                 {
@@ -139,6 +151,7 @@ const Projects: CollectionConfig = {
                         date: {
                           pickerAppearance: "dayOnly",
                         },
+                        condition: (_, { ongoing } = {}) => !ongoing,
                       },
                     },
                   ],
@@ -149,7 +162,7 @@ const Projects: CollectionConfig = {
             {
               type: "row",
               admin: {
-                condition: (_, { once } = {}) => once,
+                condition: (_, { once, ongoing } = {}) => once && !ongoing,
               },
               fields: [
                 {

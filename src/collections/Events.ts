@@ -1,6 +1,7 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
-import { lexicalRichTextField,
+import {
+  lexicalRichTextField,
   EmojisFeature,
   EmojiPickerFeature,
   HorizontalRuleFeature,
@@ -10,12 +11,13 @@ import { lexicalRichTextField,
   ReadOnlyModeFeature,
   KeywordsFeature,
   LinkFeature,
-} from 'payload-plugin-lexical';
+} from "payload-plugin-lexical";
 import { Type as TagsType } from "./Tags";
 import {
   Participants,
   Type as ParticipantsType,
 } from "../blocks/projects/Participants";
+import { spans } from "../fields/spans";
 
 export type Type = {
   slug: string;
@@ -76,9 +78,34 @@ export const Events: CollectionConfig = {
               },
               required: true,
             },
+            {
+              name: "recurring",
+              type: "checkbox",
+              label: { en: "Recurring", lt: "Kartojasi" },
+            },
+            {
+              name: "end",
+              label: { en: "End date", lt: "Data ir laikas" },
+              type: "date",
+              admin: {
+                condition: (_, { recurring } = {}) => recurring === true,
+                date: {
+                  pickerAppearance: "dayOnly",
+                },
+              },
+            },
+            {
+              name: "recurringDates",
+              type: "group",
+              admin: {
+                condition: (_, { recurring } = {}) => recurring === true,
+              },
+              label: false,
+              fields: [spans],
+            },
             lexicalRichTextField({
-              name: 'lexicalRichText',
-              label: 'Description',
+              name: "lexicalRichText",
+              label: "Description",
               localized: true,
               editorConfigModifier: (defaultEditorConfig) => {
                 defaultEditorConfig.debug = false;
@@ -87,7 +114,7 @@ export const Events: CollectionConfig = {
                 defaultEditorConfig.toggles.fontSize.enabled = false;
                 defaultEditorConfig.toggles.font.enabled = false;
                 defaultEditorConfig.toggles.align.enabled = false;
-        
+
                 defaultEditorConfig.features = [
                   EmojisFeature({}), // Adds new Emoji nodes with new, different-looking emojis
                   EmojiPickerFeature({}), // Use in combination with EmojisPlugin. When you start typing ":" it will show you different emojis you can use. They also look different!
@@ -99,9 +126,9 @@ export const Events: CollectionConfig = {
                   KeywordsFeature({}), // Highlights certain words
                   LinkFeature({}), // Obvious: hyperlinks! This includes the AutoLink plugin.
                 ];
-        
+
                 return defaultEditorConfig;
-              }
+              },
             }),
             {
               name: "description",
