@@ -42,11 +42,18 @@ const Footer: GlobalConfig = {
       localized: true,
     },
     {
-        name: "resources",
-        label: "Resources for partners",
-        type: "upload",
-        relationTo: "documents",
-        required: true
+      name: "resources",
+      label: "Resources for partners",
+      type: "upload",
+      relationTo: "documents",
+      required: true,
+    },
+    {
+      name: "resources_hearing",
+      label: "Sign Language Logos",
+      type: "upload",
+      relationTo: "documents",
+      required: true,
     },
     {
       name: "hours",
