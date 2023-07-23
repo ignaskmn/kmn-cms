@@ -55,9 +55,9 @@
     regenerator-runtime "^0.13.11"
 
 "@babel/runtime@^7.12.5":
-  version "7.21.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.21.5.tgz#8492dddda9644ae3bda3b45eabe87382caee7200"
-  integrity sha512-8jI69toZqqcsnqGGqwGS4Qb1VwLOEp4hz+CXPywcvjs60u3B4Pom/U/7rm4W8tMOYEB+E9wgD0mW1l3r8qlI9Q==
+  version "7.22.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.22.6.tgz#57d64b9ae3cff1d67eb067ae117dac087f5bd438"
+  integrity sha512-wDb5pWm4WDdF6LFUde3Jl8WzPA+3ZbxYqkC6xAXuD3irdEHN1k0NfTRrJD8ZD378SJ61miMLCqIOXYhd8x+AJQ==
   dependencies:
     regenerator-runtime "^0.13.11"
 
@@ -3985,9 +3985,9 @@ onetime@^5.1.2:
     mimic-fn "^2.1.0"
 
 openai@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/openai/-/openai-3.2.1.tgz#1fa35bdf979cbde8453b43f2dd3a7d401ee40866"
-  integrity sha512-762C9BNlJPbjjlWZi4WYK9iM2tAVAv0uUp1UmI34vb0CN5T2mjB/qM6RYBmNKMh/dN9fC+bxqPwWJZUTWW052A==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-3.3.0.tgz#a6408016ad0945738e1febf43f2fccca83a3f532"
+  integrity sha512-uqxI/Au+aPRnsaQRe8CojU0eCR7I0mBiKjD3sNMzY6DaC1ZVrc85u98mtJW6voDug8fgGN+DIZmTDxTthxb7dQ==
   dependencies:
     axios "^0.26.0"
     form-data "^4.0.0"
@@ -4157,10 +4157,10 @@ pause@0.0.1:
   resolved "https://registry.yarnpkg.com/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg==
 
-payload-plugin-lexical@^0.6.5:
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/payload-plugin-lexical/-/payload-plugin-lexical-0.6.5.tgz#d5230ee85f19d84a208708740a0ed7b309bb296a"
-  integrity sha512-G6U6eBKi2Cr6Knl2yRLC77zIfrTwK5I4H9lQzLDG5XJZsGTaSb04vYF9WTzWpjm9pbWl67UHvYMppIm9lVsE/g==
+payload-plugin-lexical@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/payload-plugin-lexical/-/payload-plugin-lexical-0.6.6.tgz#a3552c6c422084b11fb171ca61227a6fa1d68468"
+  integrity sha512-6CaexCys3A1oBF0z3rL7VJF+RybbkeyGsNEo+BuJoCLBNe/kbGKW4lSHuXcSCalPhfWA3CR991U0/oVLEctFCA==
   dependencies:
     "@lexical/clipboard" "0.10.0"
     "@lexical/code" "0.10.0"

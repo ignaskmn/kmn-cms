@@ -20,7 +20,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "payload": "^1.10.1",
-    "payload-plugin-lexical": "^0.6.5"
+    "payload-plugin-lexical": "^0.6.6"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
