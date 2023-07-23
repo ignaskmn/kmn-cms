@@ -103,6 +103,11 @@ export const Events: CollectionConfig = {
               label: false,
               fields: [spans],
             },
+            {
+              name: "fb",
+              type: "text",
+              label: "Facebook Event Link",
+            },
             lexicalRichTextField({
               name: "lexicalRichText",
               label: "Description",
