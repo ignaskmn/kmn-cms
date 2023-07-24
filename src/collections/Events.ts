@@ -144,6 +144,7 @@ export const Events: CollectionConfig = {
                 leaves: ["bold", "italic", "underline"],
               },
               localized: true,
+              hidden: true,
             },
             {
               name: "image",
@@ -156,6 +157,7 @@ export const Events: CollectionConfig = {
               label: "Legacy Image 9 x 16",
               type: "upload",
               relationTo: "images",
+              hidden: true,
             },
           ],
         },

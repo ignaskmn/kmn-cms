@@ -213,6 +213,7 @@ const Projects: CollectionConfig = {
                 leaves: ["bold", "italic", "underline"],
               },
               localized: true,
+              hidden: true,
             },
             {
               name: "image",
@@ -225,6 +226,7 @@ const Projects: CollectionConfig = {
               label: "Featured Image 9 x 16",
               type: "upload",
               relationTo: "images",
+              hidden: true,
             },
             // {
             //   name: "image1x1",
