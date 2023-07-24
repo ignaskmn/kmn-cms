@@ -5,9 +5,11 @@ import Users from "./collections/Users";
 import Images from "./collections/Images";
 import Tags from "./collections/Tags";
 import Documents from "./collections/Documents";
+import Recordings from "./collections/Recordings";
 import Projects from "./collections/Projects";
 import Pages from "./collections/Pages";
 import Events from "./collections/Events";
+import Audio from "./collections/Audio";
 import News from "./collections/News";
 import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
@@ -49,7 +51,9 @@ export default buildConfig({
     News,
     Images,
     Documents,
+    Recordings,
     Tags,
+    Audio,
   ],
   globals: [
     Featured,
@@ -61,7 +65,7 @@ export default buildConfig({
     Volunteering,
     Footer,
     Ucbanner,
-    Cookies
+    Cookies,
   ],
   localization: {
     locales: ["lt", "en"],

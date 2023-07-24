@@ -228,13 +228,6 @@ const Projects: CollectionConfig = {
               relationTo: "images",
               hidden: true,
             },
-            // {
-            //   name: "image1x1",
-            //   label: "Featured Image 1 x 1",
-            //   type: "upload",
-            //   required: true,
-            //   relationTo: "images",
-            // },
           ],
         },
         {

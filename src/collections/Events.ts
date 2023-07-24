@@ -38,7 +38,7 @@ export const Events: CollectionConfig = {
     useAsTitle: "title",
   },
   access: {
-    read: (): boolean => true, // Everyone can read Pages
+    read: (): boolean => true, // Everyone can read Events
   },
   fields: [
     {
