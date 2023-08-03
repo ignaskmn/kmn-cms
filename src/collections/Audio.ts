@@ -56,6 +56,11 @@ const Audio: CollectionConfig = {
           localized: true,
         },
         {
+          name: "txt",
+          label: { en: "Text color #", lt: "Teksto spalva" },
+          type: "text",
+        },
+        {
           name: "bg",
           label: { en: "Background color #", lt: "Fono spalva #" },
           type: "text",

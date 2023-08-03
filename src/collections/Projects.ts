@@ -205,28 +205,10 @@ const Projects: CollectionConfig = {
               },
             }),
             {
-              name: "description",
-              label: "Legacy Description",
-              type: "richText",
-              admin: {
-                elements: ["link", "ol", "ul"],
-                leaves: ["bold", "italic", "underline"],
-              },
-              localized: true,
-              hidden: true,
-            },
-            {
               name: "image",
               label: "Main Image",
               type: "upload",
               relationTo: "images",
-            },
-            {
-              name: "image9x16",
-              label: "Featured Image 9 x 16",
-              type: "upload",
-              relationTo: "images",
-              hidden: true,
             },
           ],
         },
