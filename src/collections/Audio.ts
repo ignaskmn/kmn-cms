@@ -56,14 +56,29 @@ const Audio: CollectionConfig = {
           localized: true,
         },
         {
-          name: "txt",
-          label: { en: "Text color #", lt: "Teksto spalva" },
-          type: "text",
+          name: "date",
+          label: { en: "Recording Date", lt: "Įrašo data" },
+          type: "date",
+          admin: {
+            date: {
+              pickerAppearance: "dayOnly",
+            },
+          },
         },
         {
-          name: "bg",
-          label: { en: "Background color #", lt: "Fono spalva #" },
-          type: "text",
+          type: "row",
+          fields: [
+            {
+              name: "txt",
+              label: { en: "Text color #", lt: "Teksto spalva" },
+              type: "text",
+            },
+            {
+              name: "bg",
+              label: { en: "Background color #", lt: "Fono spalva #" },
+              type: "text",
+            },
+          ],
         },
       ],
     },

@@ -1,6 +1,5 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
-import { spans } from "../fields/spans";
 import {
   lexicalRichTextField,
   EmojisFeature,
@@ -15,9 +14,9 @@ import {
 } from "payload-plugin-lexical";
 import { Type as TagsType } from "./Tags";
 import {
-  Participants,
+  ProjectParticipants,
   Type as ParticipantsType,
-} from "../blocks/projects/Participants";
+} from "../blocks/projects/ProjectParticipants";
 import RichText from "../blocks/RichText";
 
 export type Type = {
@@ -209,6 +208,80 @@ const Projects: CollectionConfig = {
               label: "Main Image",
               type: "upload",
               relationTo: "images",
+              required: true,
+            },
+          ],
+        },
+        {
+          label: "Descriptions",
+          fields: [
+            {
+              name: "datedDescriptions",
+              label: "Dated Description",
+              type: "array",
+              fields: [
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      name: "datedDescriptionStart",
+                      label: "Start Date",
+                      type: "date",
+                      required: true,
+                      admin: {
+                        date: {
+                          pickerAppearance: "monthOnly",
+                        },
+                      },
+                    },
+                    {
+                      name: "datedDescriptionEnd",
+                      label: "End Date",
+                      type: "date",
+                      required: true,
+                      admin: {
+                        date: {
+                          pickerAppearance: "monthOnly",
+                        },
+                      },
+                    },
+                  ],
+                },
+                {
+                  name: "datedImage",
+                  label: "Dated main Image",
+                  type: "upload",
+                  relationTo: "images",
+                },
+                lexicalRichTextField({
+                  name: "datedLexicalRichText",
+                  label: "Description",
+                  localized: true,
+                  required: true,
+                  editorConfigModifier: (defaultEditorConfig) => {
+                    defaultEditorConfig.debug = false;
+                    defaultEditorConfig.toggles.textColor.enabled = false;
+                    defaultEditorConfig.toggles.textBackground.enabled = false;
+                    defaultEditorConfig.toggles.fontSize.enabled = false;
+                    defaultEditorConfig.toggles.font.enabled = false;
+                    defaultEditorConfig.toggles.align.enabled = false;
+
+                    defaultEditorConfig.features = [
+                      EmojisFeature({}), // Adds new Emoji nodes with new, different-looking emojis
+                      EmojiPickerFeature({}), // Use in combination with EmojisPlugin. When you start typing ":" it will show you different emojis you can use. They also look different!
+                      HorizontalRuleFeature({}), // Horizontal rule in the editor.
+                      YouTubeFeature({}), // YouTube Embed
+                      TwitterFeature({}), // Twitter Embed
+                      ClearEditorFeature({}), // Adds a button in the action menu which clears the editor
+                      ReadOnlyModeFeature({}), // Acion button: toggle read-only mode on or off
+                      KeywordsFeature({}), // Highlights certain words
+                      LinkFeature({}), // Obvious: hyperlinks! This includes the AutoLink plugin.
+                    ];
+
+                    return defaultEditorConfig;
+                  },
+                }),
+              ],
             },
           ],
         },
@@ -219,7 +292,7 @@ const Projects: CollectionConfig = {
               name: "layout",
               label: "Activity Layout",
               type: "blocks",
-              blocks: [Participants, RichText],
+              blocks: [ProjectParticipants, RichText],
             },
           ],
         },
@@ -256,6 +329,74 @@ const Projects: CollectionConfig = {
                   type: "relationship",
                   relationTo: "news",
                   required: true,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "Media",
+          fields: [
+            {
+              name: "galleries",
+              label: "Photo Galleries",
+              type: "array",
+              fields: [
+                {
+                  name: "galleryId",
+                  label: "Photo Gallery ID",
+                  type: "text",
+                },
+                {
+                  name: "galleryDate",
+                  label: "Gallery Dated",
+                  type: "date",
+                  admin: {
+                    date: {
+                      pickerAppearance: "monthOnly",
+                    },
+                  },
+                },
+              ],
+            },
+            {
+              name: "audio",
+              label: { singular: "Audio Series", plural: "Audio Series" },
+              type: "array",
+              admin: {
+                components: {
+                  RowLabel: ({ data, index }: any) => {
+                    return `Audio Series ${String(index).padStart(2, "0")}`;
+                  },
+                },
+              },
+              fields: [
+                {
+                  name: "audioSeries",
+                  type: "relationship",
+                  relationTo: "audio",
+                  required: true,
+                },
+              ],
+            },
+            {
+              name: "videos",
+              type: "array",
+              fields: [
+                {
+                  name: "videoId",
+                  label: "Youtube video id",
+                  type: "text",
+                },
+                {
+                  name: "videoDate",
+                  label: { en: "Video Date", lt: "Įrašo data" },
+                  type: "date",
+                  admin: {
+                    date: {
+                      pickerAppearance: "monthOnly",
+                    },
+                  },
                 },
               ],
             },
