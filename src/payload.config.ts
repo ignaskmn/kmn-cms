@@ -24,6 +24,7 @@ import Footer from "./globals/Footer";
 import Ucbanner from "./globals/Ucbanner";
 import Cookies from "./globals/Cookies";
 import { LexicalPlugin } from "payload-plugin-lexical";
+import computeBlurhash from "payload-blurhash-plugin";
 
 export default buildConfig({
   // serverURL: "https://tvs.kmn.lt",
@@ -87,6 +88,10 @@ export default buildConfig({
       generateImage: ({ doc }: any) => doc?.image?.value,
     }),
     LexicalPlugin({}),
+    computeBlurhash({
+      width: 61,
+      componentX: 6,
+    }),
   ],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),

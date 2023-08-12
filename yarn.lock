@@ -1331,6 +1331,11 @@ bl@^4.0.3:
     inherits "^2.0.4"
     readable-stream "^3.4.0"
 
+blurhash@^2.0.4:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/blurhash/-/blurhash-2.0.5.tgz#efde729fc14a2f03571a6aa91b49cba80d1abe4b"
+  integrity sha512-cRygWd7kGBQO3VEhPiTgq4Wc43ctsM+o46urrmPOiuAe+07fzlSB9OJVdpgDL0jPqXUVQ9ht7aq7kxOeJHRK+w==
+
 body-parser@1.20.1:
   version "1.20.1"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.20.1.tgz#b1812a8912c195cd371a3ee5e66faa2338a5c668"
@@ -3675,7 +3680,7 @@ minimatch@^3.0.3, minimatch@^3.1.1, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^5.0.1:
+minimatch@^5.0.1, minimatch@^5.1.1:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.6.tgz#1cfcb8cf5522ea69952cd2af95ae09477f122a96"
   integrity sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==
@@ -4156,6 +4161,14 @@ pause@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg==
+
+payload-blurhash-plugin@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/payload-blurhash-plugin/-/payload-blurhash-plugin-1.2.0.tgz#c743a1f59c6e47a4da03c0b1c5b4d34e42641a0b"
+  integrity sha512-23HKhoNPrpa1hDqVEeKRCkPEL/AOEa1xjZWhYFgK6vyK/L/WzvBGI3DOHFrhg963s/isbbZOA8D88/TUq+rH4A==
+  dependencies:
+    blurhash "^2.0.4"
+    minimatch "^5.1.1"
 
 payload-plugin-lexical@^0.6.6:
   version "0.6.6"
