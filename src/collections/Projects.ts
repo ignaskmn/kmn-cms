@@ -14,9 +14,9 @@ import {
 } from "payload-plugin-lexical";
 import { Type as TagsType } from "./Tags";
 import {
-  ProjectParticipants,
+  Participants,
   Type as ParticipantsType,
-} from "../blocks/projects/ProjectParticipants";
+} from "../blocks/projects/Participants";
 import RichText from "../blocks/RichText";
 
 export type Type = {
@@ -180,6 +180,7 @@ const Projects: CollectionConfig = {
               name: "lexicalRichText",
               label: "Description",
               localized: true,
+              required: true,
               editorConfigModifier: (defaultEditorConfig) => {
                 defaultEditorConfig.debug = false;
                 defaultEditorConfig.toggles.textColor.enabled = false;
@@ -208,7 +209,6 @@ const Projects: CollectionConfig = {
               label: "Main Image",
               type: "upload",
               relationTo: "images",
-              required: true,
             },
           ],
         },
@@ -292,7 +292,7 @@ const Projects: CollectionConfig = {
               name: "layout",
               label: "Activity Layout",
               type: "blocks",
-              blocks: [ProjectParticipants, RichText],
+              blocks: [Participants, RichText],
             },
           ],
         },

@@ -16,7 +16,7 @@ import { Type as TagsType } from "./Tags";
 import {
   Participants,
   Type as ParticipantsType,
-} from "../blocks/projects/Participants";
+} from "../blocks/projects/OldParticipants";
 import { spans } from "../fields/spans";
 
 export type Type = {
@@ -112,6 +112,7 @@ export const Events: CollectionConfig = {
               name: "lexicalRichText",
               label: "Description",
               localized: true,
+              required: true,
               editorConfigModifier: (defaultEditorConfig) => {
                 defaultEditorConfig.debug = false;
                 defaultEditorConfig.toggles.textColor.enabled = false;
