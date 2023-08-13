@@ -19,31 +19,6 @@ export const Participants: Block = {
       required: true,
     },
     {
-      type: "row",
-      fields: [
-        {
-          name: "start",
-          label: "Start Date",
-          type: "date",
-          admin: {
-            date: {
-              pickerAppearance: "monthOnly",
-            },
-          },
-        },
-        {
-          name: "end",
-          label: "End Date",
-          type: "date",
-          admin: {
-            date: {
-              pickerAppearance: "monthOnly",
-            },
-          },
-        },
-      ],
-    },
-    {
       name: "participants",
       type: "array",
       admin: {
@@ -87,6 +62,31 @@ export const Participants: Block = {
           },
           localized: true,
           required: true,
+        },
+        {
+          type: "row",
+          fields: [
+            {
+              name: "start",
+              label: "Start Date",
+              type: "date",
+              admin: {
+                date: {
+                  pickerAppearance: "monthOnly",
+                },
+              },
+            },
+            {
+              name: "end",
+              label: "End Date",
+              type: "date",
+              admin: {
+                date: {
+                  pickerAppearance: "monthOnly",
+                },
+              },
+            },
+          ],
         },
       ],
     },
