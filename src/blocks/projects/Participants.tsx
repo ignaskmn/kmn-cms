@@ -64,27 +64,24 @@ export const Participants: Block = {
           required: true,
         },
         {
-          type: "row",
-          fields: [
-            {
-              name: "start",
-              label: "Start Date",
-              type: "date",
-              admin: {
-                date: {
-                  pickerAppearance: "monthOnly",
-                },
+          name: "yearsParticipated",
+          label: "Years Participated",
+          type: "array",
+          admin: {
+            components: {
+              RowLabel: ({ data, index }: any) => {
+                return (
+                  data?.participationYear ||
+                  `Year ${String(index).padStart(2, "0")}`
+                );
               },
             },
+          },
+          fields: [
             {
-              name: "end",
-              label: "End Date",
-              type: "date",
-              admin: {
-                date: {
-                  pickerAppearance: "monthOnly",
-                },
-              },
+              name: "participationYear",
+              label: "Participation Year",
+              type: "number",
             },
           ],
         },

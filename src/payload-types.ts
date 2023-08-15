@@ -18,6 +18,7 @@ export interface Config {
     recordings: Recording;
     tags: Tag;
     audio: Audio;
+    photos: Photo;
   };
   globals: {
     featured: Featured;
@@ -54,14 +55,18 @@ export interface Project {
   once?: boolean;
   start?: string;
   end?: string;
-  lexicalRichText?: {
-    [k: string]: unknown;
-  }[];
-  description?: {
+  lexicalRichText: {
     [k: string]: unknown;
   }[];
   image?: string | Image;
-  image9x16?: string | Image;
+  datedDescriptions?: {
+    datedDescriptionYear: number;
+    datedImage?: string | Image;
+    datedLexicalRichText: {
+      [k: string]: unknown;
+    }[];
+    id?: string;
+  }[];
   layout?: (
     | {
         title: string;
@@ -71,6 +76,10 @@ export interface Project {
           nationality?: string;
           bio: {
             [k: string]: unknown;
+          }[];
+          yearsParticipated?: {
+            participationYear?: number;
+            id?: string;
           }[];
           id?: string;
         }[];
@@ -95,6 +104,30 @@ export interface Project {
     news: string | News;
     id?: string;
   }[];
+  photos?: {
+    photoAlbum?: string | Photo;
+    photoAlbumYears?: {
+      photoAlbumYear?: number;
+      id?: string;
+    }[];
+    id?: string;
+  }[];
+  audio?: {
+    audioSeries: string | Audio;
+    audioSeriesYears?: {
+      audioSeriesYear?: number;
+      id?: string;
+    }[];
+    id?: string;
+  }[];
+  videos?: {
+    videoId?: string;
+    videoYears?: {
+      videoYear?: number;
+      id?: string;
+    }[];
+    id?: string;
+  }[];
   tags?: string[] | Tag[];
   meta?: {
     title?: string;
@@ -107,6 +140,7 @@ export interface Project {
 export interface Image {
   id: string;
   alt: string;
+  blurhash?: string;
   updatedAt: string;
   createdAt: string;
   url?: string;
@@ -191,14 +225,10 @@ export interface Event {
     }[];
   };
   fb?: string;
-  lexicalRichText?: {
-    [k: string]: unknown;
-  }[];
-  description?: {
+  lexicalRichText: {
     [k: string]: unknown;
   }[];
   image?: string | Image;
-  image9x16?: string | Image;
   external?: boolean;
   venue?: string;
   address?: string;
@@ -249,6 +279,42 @@ export interface News {
   updatedAt: string;
   createdAt: string;
 }
+export interface Photo {
+  id: string;
+  title: string;
+  albumId: string;
+  date?: string;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Audio {
+  id: string;
+  title: string;
+  recordings?: {
+    recording: string | Recording;
+    image: string | Image;
+    recTitle?: string;
+    recHost?: string;
+    date?: string;
+    txt?: string;
+    bg?: string;
+    id?: string;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Recording {
+  id: string;
+  blurhash?: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+}
 export interface Page {
   id: string;
   title: string;
@@ -267,6 +333,7 @@ export interface Page {
 }
 export interface Document {
   id: string;
+  blurhash?: string;
   updatedAt: string;
   createdAt: string;
   url?: string;
@@ -275,31 +342,6 @@ export interface Document {
   filesize?: number;
   width?: number;
   height?: number;
-}
-export interface Recording {
-  id: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
-}
-export interface Audio {
-  id: string;
-  title: string;
-  recordings?: {
-    recording: string | Recording;
-    image: string | Image;
-    recTitle?: string;
-    recHost?: string;
-    bg?: string;
-    id?: string;
-  }[];
-  updatedAt: string;
-  createdAt: string;
 }
 export interface Featured {
   id: string;

@@ -120,12 +120,12 @@ const Projects: CollectionConfig = {
                 },
               ],
             },
-            // Show start and end date fields only if type is residency, exhibition or education
             {
               type: "row",
               admin: {
                 condition: (_, { once, ongoing } = {}) => !once || ongoing,
               },
+              // @ChatGPT: This is where we get the values that can be used to calculate the value of years the project has been going
               fields: [
                 {
                   type: "row",
@@ -217,35 +217,24 @@ const Projects: CollectionConfig = {
           fields: [
             {
               name: "datedDescriptions",
-              label: "Dated Description",
+              label: "Descriptions by Year",
               type: "array",
+              admin: {
+                components: {
+                  RowLabel: ({ data, index }: any) => {
+                    return (
+                      data?.datedDescriptionYear ||
+                      `Year ${String(index).padStart(2, "0")}`
+                    );
+                  },
+                },
+              },
               fields: [
                 {
-                  type: "row",
-                  fields: [
-                    {
-                      name: "datedDescriptionStart",
-                      label: "Start Date",
-                      type: "date",
-                      required: true,
-                      admin: {
-                        date: {
-                          pickerAppearance: "monthOnly",
-                        },
-                      },
-                    },
-                    {
-                      name: "datedDescriptionEnd",
-                      label: "End Date",
-                      type: "date",
-                      required: true,
-                      admin: {
-                        date: {
-                          pickerAppearance: "monthOnly",
-                        },
-                      },
-                    },
-                  ],
+                  name: "datedDescriptionYear",
+                  label: "Description for Year",
+                  type: "number",
+                  required: true,
                 },
                 {
                   name: "datedImage",
@@ -338,30 +327,50 @@ const Projects: CollectionConfig = {
           label: "Media",
           fields: [
             {
-              name: "galleries",
-              label: "Photo Galleries",
+              name: "photos",
+              label: "Photo Albums",
               type: "array",
+              admin: {
+                components: {
+                  RowLabel: ({ data, index }: any) => {
+                    return `Photo Album ${String(index).padStart(2, "0")}`;
+                  },
+                },
+              },
               fields: [
                 {
-                  name: "galleryId",
-                  label: "Photo Gallery ID",
-                  type: "text",
+                  name: "photoAlbum",
+                  label: "Photo Gallery",
+                  type: "relationship",
+                  relationTo: "photos",
                 },
                 {
-                  name: "galleryDate",
-                  label: "Gallery Dated",
-                  type: "date",
+                  name: "photoAlbumYears",
+                  label: "Add to Years",
+                  type: "array",
                   admin: {
-                    date: {
-                      pickerAppearance: "monthOnly",
+                    components: {
+                      RowLabel: ({ data, index }: any) => {
+                        return (
+                          data?.photoAlbumYear ||
+                          `Year ${String(index).padStart(2, "0")}`
+                        );
+                      },
                     },
                   },
+                  fields: [
+                    {
+                      name: "photoAlbumYear",
+                      label: "Year",
+                      type: "number",
+                    },
+                  ],
                 },
               ],
             },
             {
               name: "audio",
-              label: { singular: "Audio Series", plural: "Audio Series" },
+              labels: { singular: "Audio Series", plural: "Audio Series" },
               type: "array",
               admin: {
                 components: {
@@ -377,6 +386,28 @@ const Projects: CollectionConfig = {
                   relationTo: "audio",
                   required: true,
                 },
+                {
+                  name: "audioSeriesYears",
+                  label: "Add to Years",
+                  type: "array",
+                  admin: {
+                    components: {
+                      RowLabel: ({ data, index }: any) => {
+                        return (
+                          data?.audioSeriesYear ||
+                          `Year ${String(index).padStart(2, "0")}`
+                        );
+                      },
+                    },
+                  },
+                  fields: [
+                    {
+                      name: "audioSeriesYear",
+                      label: "Year",
+                      type: "number",
+                    },
+                  ],
+                },
               ],
             },
             {
@@ -389,14 +420,26 @@ const Projects: CollectionConfig = {
                   type: "text",
                 },
                 {
-                  name: "videoDate",
-                  label: { en: "Video Date", lt: "Įrašo data" },
-                  type: "date",
+                  name: "videoYears",
+                  label: "Add to Years",
+                  type: "array",
                   admin: {
-                    date: {
-                      pickerAppearance: "monthOnly",
+                    components: {
+                      RowLabel: ({ data, index }: any) => {
+                        return (
+                          data?.videoYear ||
+                          `Year ${String(index).padStart(2, "0")}`
+                        );
+                      },
                     },
                   },
+                  fields: [
+                    {
+                      name: "videoYear",
+                      label: "Year",
+                      type: "number",
+                    },
+                  ],
                 },
               ],
             },
