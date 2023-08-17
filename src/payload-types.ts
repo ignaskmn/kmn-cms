@@ -59,6 +59,7 @@ export interface Project {
     [k: string]: unknown;
   }[];
   image?: string | Image;
+  sortingByYear?: boolean;
   datedDescriptions?: {
     datedDescriptionYear: number;
     datedImage?: string | Image;

@@ -80,7 +80,7 @@ export default buildConfig({
       collections: ["projects", "events", "news", "pages"],
       uploadsCollection: "images",
       generateTitle: ({ doc }: any) =>
-        `${doc?.title?.value} - Kauno Menininkų Namai`,
+        `${doc?.title?.value} - Kauno menininkų namai`,
       generateDescription: ({ doc }: any) =>
         // `${doc?.description.initialValue[0].children[0].text.substring(
         //   0,

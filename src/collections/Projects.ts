@@ -216,6 +216,11 @@ const Projects: CollectionConfig = {
           label: "Descriptions",
           fields: [
             {
+              name: "sortingByYear",
+              label: "Project Information Sorted by Year",
+              type: "checkbox",
+            },
+            {
               name: "datedDescriptions",
               label: "Descriptions by Year",
               type: "array",
@@ -343,6 +348,7 @@ const Projects: CollectionConfig = {
                   label: "Photo Gallery",
                   type: "relationship",
                   relationTo: "photos",
+                  required: true,
                 },
                 {
                   name: "photoAlbumYears",
@@ -363,6 +369,7 @@ const Projects: CollectionConfig = {
                       name: "photoAlbumYear",
                       label: "Year",
                       type: "number",
+                      required: true,
                     },
                   ],
                 },
@@ -405,6 +412,7 @@ const Projects: CollectionConfig = {
                       name: "audioSeriesYear",
                       label: "Year",
                       type: "number",
+                      required: true,
                     },
                   ],
                 },
@@ -418,6 +426,7 @@ const Projects: CollectionConfig = {
                   name: "videoId",
                   label: "Youtube video id",
                   type: "text",
+                  required: true,
                 },
                 {
                   name: "videoYears",
@@ -438,6 +447,7 @@ const Projects: CollectionConfig = {
                       name: "videoYear",
                       label: "Year",
                       type: "number",
+                      required: true,
                     },
                   ],
                 },

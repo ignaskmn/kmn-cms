@@ -2,6 +2,7 @@ import { CollectionConfig } from "payload/types";
 
 const Audio: CollectionConfig = {
   slug: "audio",
+  labels: { singular: "Audio Series", plural: "Audio Series" },
   access: {
     read: (): boolean => true, // Everyone can read Audio
   },
