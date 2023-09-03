@@ -17,6 +17,7 @@ import {
   Participants,
   Type as ParticipantsType,
 } from "../blocks/projects/OldParticipants";
+import { Program } from "../blocks/events/Program";
 import { spans } from "../fields/spans";
 
 export type Type = {
@@ -179,7 +180,7 @@ export const Events: CollectionConfig = {
               name: "layout",
               label: "Activity Layout",
               type: "blocks",
-              blocks: [Participants],
+              blocks: [Participants, Program],
             },
           ],
         },
