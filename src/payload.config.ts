@@ -9,6 +9,7 @@ import Recordings from "./collections/Recordings";
 import Projects from "./collections/Projects";
 import Pages from "./collections/Pages";
 import Events from "./collections/Events";
+import CatalogItems from "./collections/CatalogItems";
 import Audio from "./collections/Audio";
 import News from "./collections/News";
 import Menu from "./globals/Menu";
@@ -48,6 +49,7 @@ export default buildConfig({
     Projects,
     Pages,
     Events,
+    CatalogItems,
     News,
     Images,
     Documents,
