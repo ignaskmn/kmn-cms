@@ -11,6 +11,7 @@ import Pages from "./collections/Pages";
 import Events from "./collections/Events";
 import CatalogItems from "./collections/CatalogItems";
 import Audio from "./collections/Audio";
+import Photos from "./collections/Photos";
 import News from "./collections/News";
 import Menu from "./globals/Menu";
 import AdminLogo from "./components/AdminGraphics/adminLogo";
@@ -25,6 +26,7 @@ import Footer from "./globals/Footer";
 import Ucbanner from "./globals/Ucbanner";
 import Cookies from "./globals/Cookies";
 import { LexicalPlugin } from "payload-plugin-lexical";
+import computeBlurhash from "payload-blurhash-plugin";
 
 export default buildConfig({
   // serverURL: "https://tvs.kmn.lt",
@@ -56,6 +58,7 @@ export default buildConfig({
     Recordings,
     Tags,
     Audio,
+    Photos,
   ],
   globals: [
     Featured,
@@ -79,7 +82,7 @@ export default buildConfig({
       collections: ["projects", "events", "news", "pages"],
       uploadsCollection: "images",
       generateTitle: ({ doc }: any) =>
-        `${doc?.title?.value} - Kauno Menininkų Namai`,
+        `${doc?.title?.value} - Kauno menininkų namai`,
       generateDescription: ({ doc }: any) =>
         // `${doc?.description.initialValue[0].children[0].text.substring(
         //   0,
@@ -89,6 +92,10 @@ export default buildConfig({
       generateImage: ({ doc }: any) => doc?.image?.value,
     }),
     LexicalPlugin({}),
+    computeBlurhash({
+      width: 61,
+      componentX: 6,
+    }),
   ],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),

@@ -1,6 +1,5 @@
 import { CollectionConfig } from "payload/types";
 import formatSlug from "../utilities/formatSlug";
-import { spans } from "../fields/spans";
 import {
   lexicalRichTextField,
   EmojisFeature,
@@ -121,12 +120,12 @@ const Projects: CollectionConfig = {
                 },
               ],
             },
-            // Show start and end date fields only if type is residency, exhibition or education
             {
               type: "row",
               admin: {
                 condition: (_, { once, ongoing } = {}) => !once || ongoing,
               },
+              // @ChatGPT: This is where we get the values that can be used to calculate the value of years the project has been going
               fields: [
                 {
                   type: "row",
@@ -181,6 +180,7 @@ const Projects: CollectionConfig = {
               name: "lexicalRichText",
               label: "Description",
               localized: true,
+              required: true,
               editorConfigModifier: (defaultEditorConfig) => {
                 defaultEditorConfig.debug = false;
                 defaultEditorConfig.toggles.textColor.enabled = false;
@@ -209,6 +209,73 @@ const Projects: CollectionConfig = {
               label: "Main Image",
               type: "upload",
               relationTo: "images",
+            },
+          ],
+        },
+        {
+          label: "Descriptions",
+          fields: [
+            {
+              name: "sortingByYear",
+              label: "Project Information Sorted by Year",
+              type: "checkbox",
+            },
+            {
+              name: "datedDescriptions",
+              label: "Descriptions by Year",
+              type: "array",
+              admin: {
+                components: {
+                  RowLabel: ({ data, index }: any) => {
+                    return (
+                      data?.datedDescriptionYear ||
+                      `Year ${String(index).padStart(2, "0")}`
+                    );
+                  },
+                },
+              },
+              fields: [
+                {
+                  name: "datedDescriptionYear",
+                  label: "Description for Year",
+                  type: "number",
+                  required: true,
+                },
+                {
+                  name: "datedImage",
+                  label: "Dated main Image",
+                  type: "upload",
+                  relationTo: "images",
+                },
+                lexicalRichTextField({
+                  name: "datedLexicalRichText",
+                  label: "Description",
+                  localized: true,
+                  required: true,
+                  editorConfigModifier: (defaultEditorConfig) => {
+                    defaultEditorConfig.debug = false;
+                    defaultEditorConfig.toggles.textColor.enabled = false;
+                    defaultEditorConfig.toggles.textBackground.enabled = false;
+                    defaultEditorConfig.toggles.fontSize.enabled = false;
+                    defaultEditorConfig.toggles.font.enabled = false;
+                    defaultEditorConfig.toggles.align.enabled = false;
+
+                    defaultEditorConfig.features = [
+                      EmojisFeature({}), // Adds new Emoji nodes with new, different-looking emojis
+                      EmojiPickerFeature({}), // Use in combination with EmojisPlugin. When you start typing ":" it will show you different emojis you can use. They also look different!
+                      HorizontalRuleFeature({}), // Horizontal rule in the editor.
+                      YouTubeFeature({}), // YouTube Embed
+                      TwitterFeature({}), // Twitter Embed
+                      ClearEditorFeature({}), // Adds a button in the action menu which clears the editor
+                      ReadOnlyModeFeature({}), // Acion button: toggle read-only mode on or off
+                      KeywordsFeature({}), // Highlights certain words
+                      LinkFeature({}), // Obvious: hyperlinks! This includes the AutoLink plugin.
+                    ];
+
+                    return defaultEditorConfig;
+                  },
+                }),
+              ],
             },
           ],
         },
@@ -256,6 +323,133 @@ const Projects: CollectionConfig = {
                   type: "relationship",
                   relationTo: "news",
                   required: true,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "Media",
+          fields: [
+            {
+              name: "photos",
+              label: "Photo Albums",
+              type: "array",
+              admin: {
+                components: {
+                  RowLabel: ({ data, index }: any) => {
+                    return `Photo Album ${String(index).padStart(2, "0")}`;
+                  },
+                },
+              },
+              fields: [
+                {
+                  name: "photoAlbum",
+                  label: "Photo Gallery",
+                  type: "relationship",
+                  relationTo: "photos",
+                  required: true,
+                },
+                {
+                  name: "photoAlbumYears",
+                  label: "Add to Years",
+                  type: "array",
+                  admin: {
+                    components: {
+                      RowLabel: ({ data, index }: any) => {
+                        return (
+                          data?.photoAlbumYear ||
+                          `Year ${String(index).padStart(2, "0")}`
+                        );
+                      },
+                    },
+                  },
+                  fields: [
+                    {
+                      name: "photoAlbumYear",
+                      label: "Year",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              name: "audio",
+              labels: { singular: "Audio Series", plural: "Audio Series" },
+              type: "array",
+              admin: {
+                components: {
+                  RowLabel: ({ data, index }: any) => {
+                    return `Audio Series ${String(index).padStart(2, "0")}`;
+                  },
+                },
+              },
+              fields: [
+                {
+                  name: "audioSeries",
+                  type: "relationship",
+                  relationTo: "audio",
+                  required: true,
+                },
+                {
+                  name: "audioSeriesYears",
+                  label: "Add to Years",
+                  type: "array",
+                  admin: {
+                    components: {
+                      RowLabel: ({ data, index }: any) => {
+                        return (
+                          data?.audioSeriesYear ||
+                          `Year ${String(index).padStart(2, "0")}`
+                        );
+                      },
+                    },
+                  },
+                  fields: [
+                    {
+                      name: "audioSeriesYear",
+                      label: "Year",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              name: "videos",
+              type: "array",
+              fields: [
+                {
+                  name: "videoId",
+                  label: "Youtube video id",
+                  type: "text",
+                  required: true,
+                },
+                {
+                  name: "videoYears",
+                  label: "Add to Years",
+                  type: "array",
+                  admin: {
+                    components: {
+                      RowLabel: ({ data, index }: any) => {
+                        return (
+                          data?.videoYear ||
+                          `Year ${String(index).padStart(2, "0")}`
+                        );
+                      },
+                    },
+                  },
+                  fields: [
+                    {
+                      name: "videoYear",
+                      label: "Year",
+                      type: "number",
+                      required: true,
+                    },
+                  ],
                 },
               ],
             },
