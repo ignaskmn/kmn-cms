@@ -31,7 +31,6 @@ export const CatalogItems: CollectionConfig = {
         name: "author",
         label: { en: "Author", lt: "Autoriai" },
         type: "text",
-        required: true,
     },
     lexicalRichTextField({
         name: "lexicalRichText",
@@ -66,6 +65,14 @@ export const CatalogItems: CollectionConfig = {
             type: "upload",
             relationTo: "images",
         },
+        {
+          name: "cover-link",
+          label: "Cover",
+          type: "text",
+          admin: {
+            readOnly: true,
+          }
+      },
 
     ]
   
