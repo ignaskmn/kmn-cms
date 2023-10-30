@@ -67,7 +67,7 @@ export const CatalogItems: CollectionConfig = {
         },
         {
           name: "cover-link",
-          label: "Cover",
+          label: "Cover link",
           type: "text",
           admin: {
             readOnly: true,
