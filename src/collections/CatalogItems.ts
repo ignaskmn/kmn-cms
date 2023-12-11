@@ -22,60 +22,83 @@ export const CatalogItems: CollectionConfig = {
   },
   fields: [
     {
-        name: "title",
-        label: { en: "Title", lt: "Pavadinimas" },
-        type: "text",
-        required: true,
+      name: "title",
+      label: { en: "Title", lt: "Pavadinimas" },
+      type: "text",
+      required: true,
     },
     {
-        name: "author",
-        label: { en: "Author", lt: "Autoriai" },
-        type: "text",
+      name: "author",
+      label: { en: "Author", lt: "Autoriai" },
+      type: "text",
+    },
+    {
+      name: "publisher",
+      label: { en: "Publisher", lt: "Leidykla" },
+      type: "text",
+    },
+    {
+      type: "row",
+      fields: [
+        {
+          name: "year",
+          label: { en: "Year", lt: "Metai" },
+          type: "number",
+        },
+        {
+          name: "pages",
+          label: { en: "Pages", lt: "Puslapiai" },
+          type: "number",
+        },
+        {
+          name: "isbn",
+          label: { en: "ISBN", lt: "ISBN" },
+          type: "text",
+        },
+      ],
     },
     lexicalRichTextField({
-        name: "lexicalRichText",
-        label: "Description",
-        localized: true,
-        editorConfigModifier: (defaultEditorConfig) => {
-          defaultEditorConfig.debug = false;
-          defaultEditorConfig.toggles.textColor.enabled = false;
-          defaultEditorConfig.toggles.textBackground.enabled = false;
-          defaultEditorConfig.toggles.fontSize.enabled = false;
-          defaultEditorConfig.toggles.font.enabled = false;
-          defaultEditorConfig.toggles.align.enabled = false;
+      name: "lexicalRichText",
+      label: "Description",
+      localized: true,
+      editorConfigModifier: (defaultEditorConfig) => {
+        defaultEditorConfig.debug = false;
+        defaultEditorConfig.toggles.textColor.enabled = false;
+        defaultEditorConfig.toggles.textBackground.enabled = false;
+        defaultEditorConfig.toggles.fontSize.enabled = false;
+        defaultEditorConfig.toggles.font.enabled = false;
+        defaultEditorConfig.toggles.align.enabled = false;
 
-          defaultEditorConfig.features = [
-            EmojisFeature({}), // Adds new Emoji nodes with new, different-looking emojis
-            EmojiPickerFeature({}), // Use in combination with EmojisPlugin. When you start typing ":" it will show you different emojis you can use. They also look different!
-            HorizontalRuleFeature({}), // Horizontal rule in the editor.
-            YouTubeFeature({}), // YouTube Embed
-            TwitterFeature({}), // Twitter Embed
-            ClearEditorFeature({}), // Adds a button in the action menu which clears the editor
-            ReadOnlyModeFeature({}), // Acion button: toggle read-only mode on or off
-            KeywordsFeature({}), // Highlights certain words
-            LinkFeature({}), // Obvious: hyperlinks! This includes the AutoLink plugin.
-          ];
+        defaultEditorConfig.features = [
+          EmojisFeature({}), // Adds new Emoji nodes with new, different-looking emojis
+          EmojiPickerFeature({}), // Use in combination with EmojisPlugin. When you start typing ":" it will show you different emojis you can use. They also look different!
+          HorizontalRuleFeature({}), // Horizontal rule in the editor.
+          YouTubeFeature({}), // YouTube Embed
+          TwitterFeature({}), // Twitter Embed
+          ClearEditorFeature({}), // Adds a button in the action menu which clears the editor
+          ReadOnlyModeFeature({}), // Acion button: toggle read-only mode on or off
+          KeywordsFeature({}), // Highlights certain words
+          LinkFeature({}), // Obvious: hyperlinks! This includes the AutoLink plugin.
+        ];
 
-          return defaultEditorConfig;
-        },
-        }),
-        {
-            name: "cover",
-            label: "Cover",
-            type: "upload",
-            relationTo: "images",
-        },
-        {
-          name: "cover-link",
-          label: "Cover link",
-          type: "text",
-          admin: {
-            readOnly: true,
-          }
+        return defaultEditorConfig;
       },
-
-    ]
-  
+    }),
+    {
+      name: "cover",
+      label: "Cover",
+      type: "upload",
+      relationTo: "images",
+    },
+    {
+      name: "coverLink",
+      label: "Cover link",
+      type: "text",
+      admin: {
+        readOnly: true,
+      },
+    },
+  ],
 };
 
 export default CatalogItems;
