@@ -12,6 +12,7 @@ export interface Config {
     projects: Project;
     pages: Page;
     events: Event;
+    'catalog-items': CatalogItem;
     news: News;
     images: Image;
     documents: Document;
@@ -31,12 +32,16 @@ export interface Config {
     footer: Footer;
     ucbanner: Ucbanner;
     cookies: Cooky;
+    readingRoom: ReadingRoom;
   };
 }
 export interface User {
   id: string;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean;
+  apiKey?: string;
+  apiKeyIndex?: string;
   email: string;
   resetPasswordToken?: string;
   resetPasswordExpiration?: string;
@@ -106,9 +111,9 @@ export interface Project {
     id?: string;
   }[];
   photos?: {
-    photoAlbum?: string | Photo;
+    photoAlbum: string | Photo;
     photoAlbumYears?: {
-      photoAlbumYear?: number;
+      photoAlbumYear: number;
       id?: string;
     }[];
     id?: string;
@@ -116,15 +121,15 @@ export interface Project {
   audio?: {
     audioSeries: string | Audio;
     audioSeriesYears?: {
-      audioSeriesYear?: number;
+      audioSeriesYear: number;
       id?: string;
     }[];
     id?: string;
   }[];
   videos?: {
-    videoId?: string;
+    videoId: string;
     videoYears?: {
-      videoYear?: number;
+      videoYear: number;
       id?: string;
     }[];
     id?: string;
@@ -233,21 +238,36 @@ export interface Event {
   external?: boolean;
   venue?: string;
   address?: string;
-  layout?: {
-    title: string;
-    participants?: {
-      firstName: string;
-      lastName: string;
-      nationality?: string;
-      bio: {
-        [k: string]: unknown;
-      }[];
-      id?: string;
-    }[];
-    id?: string;
-    blockName?: string;
-    blockType: 'participants';
-  }[];
+  layout?: (
+    | {
+        title: string;
+        participants?: {
+          firstName: string;
+          lastName: string;
+          nationality?: string;
+          bio: {
+            [k: string]: unknown;
+          }[];
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'participants';
+      }
+    | {
+        title: string;
+        programItem?: {
+          programItemTitle: string;
+          programItemDescription: {
+            [k: string]: unknown;
+          }[];
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'program';
+      }
+  )[];
   tags?: string[] | Tag[];
   meta?: {
     title?: string;
@@ -329,6 +349,22 @@ export interface Page {
     description?: string;
     image?: string | Image;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+export interface CatalogItem {
+  id: string;
+  title: string;
+  author?: string;
+  publisher?: string;
+  year?: number;
+  pages?: number;
+  isbn?: string;
+  lexicalRichText?: {
+    [k: string]: unknown;
+  }[];
+  cover?: string | Image;
+  coverLink?: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -463,7 +499,12 @@ export interface Facility {
             description?: {
               [k: string]: unknown;
             }[];
-            image9x16: string | Image;
+            image?: string | Image;
+            galleryImages?: {
+              galleryImage?: string | Image;
+              id?: string;
+            }[];
+            image9x16?: string | Image;
             image1x1?: string | Image;
             id?: string;
           }[];
@@ -592,6 +633,38 @@ export interface Cooky {
   lexicalRichText?: {
     [k: string]: unknown;
   }[];
+  updatedAt?: string;
+  createdAt?: string;
+}
+export interface ReadingRoom {
+  id: string;
+  image?: string | Image;
+  layout?: (
+    | {
+        lexicalRichText?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'richText';
+      }
+    | {
+        title: string;
+        link?: string;
+        id?: string;
+        blockName?: string;
+        blockType: 'button';
+      }
+    | {
+        title: string;
+        content?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'localizedTextCollapse';
+      }
+  )[];
   updatedAt?: string;
   createdAt?: string;
 }

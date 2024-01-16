@@ -10,6 +10,7 @@ import Projects from "./collections/Projects";
 import Pages from "./collections/Pages";
 import Events from "./collections/Events";
 import CatalogItems from "./collections/CatalogItems";
+import ReadingRoom from "./globals/ReadingRoom";
 import Audio from "./collections/Audio";
 import Photos from "./collections/Photos";
 import News from "./collections/News";
@@ -27,6 +28,7 @@ import Ucbanner from "./globals/Ucbanner";
 import Cookies from "./globals/Cookies";
 import { LexicalPlugin } from "payload-plugin-lexical";
 import computeBlurhash from "payload-blurhash-plugin";
+import formBuilder from "@payloadcms/plugin-form-builder";
 
 export default buildConfig({
   // serverURL: "https://tvs.kmn.lt",
@@ -71,6 +73,7 @@ export default buildConfig({
     Footer,
     Ucbanner,
     Cookies,
+    ReadingRoom,
   ],
   localization: {
     locales: ["lt", "en"],
@@ -95,6 +98,21 @@ export default buildConfig({
     computeBlurhash({
       width: 61,
       componentX: 6,
+    }),
+    formBuilder({
+      // ...
+      fields: {
+        text: true,
+        textarea: true,
+        select: true,
+        email: true,
+        state: true,
+        country: true,
+        checkbox: true,
+        number: true,
+        message: true,
+        payment: false,
+      },
     }),
   ],
   typescript: {
