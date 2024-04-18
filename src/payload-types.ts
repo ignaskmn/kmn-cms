@@ -112,7 +112,7 @@ export interface Project {
                 participants?: {
                   name: string;
                   subtext?: string;
-                  bio: {
+                  content?: {
                     [k: string]: unknown;
                   }[];
                   id?: string;
