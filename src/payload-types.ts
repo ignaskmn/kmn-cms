@@ -103,6 +103,40 @@ export interface Project {
         blockName?: string;
         blockType: 'richText';
       }
+    | {
+        image?: string | Image;
+        section?: {
+          sectionTitle: string;
+          blocks?: (
+            | {
+                participants?: {
+                  name: string;
+                  subtext?: string;
+                  bio: {
+                    [k: string]: unknown;
+                  }[];
+                  id?: string;
+                }[];
+                id?: string;
+                blockName?: string;
+                blockType: 'participantsBlock';
+              }
+            | {
+                events?: {
+                  event?: string | Event;
+                  id?: string;
+                }[];
+                id?: string;
+                blockName?: string;
+                blockType: 'eventListBlock';
+              }
+          )[];
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'programBlock';
+      }
   )[];
   events?: {
     event: string | Event;
@@ -346,6 +380,13 @@ export interface Page {
     [k: string]: unknown;
   }[];
   image?: string | Image;
+  blocks?: {
+    email?: string;
+    tel?: string;
+    id?: string;
+    blockName?: string;
+    blockType: 'contactsBlock';
+  }[];
   meta?: {
     title?: string;
     description?: string;
