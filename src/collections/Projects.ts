@@ -18,6 +18,7 @@ import {
   Type as ParticipantsType,
 } from "../blocks/projects/Participants";
 import RichText from "../blocks/RichText";
+import { Program } from "../blocks/Program";
 
 export type Type = {
   slug: string;
@@ -280,13 +281,13 @@ const Projects: CollectionConfig = {
           ],
         },
         {
-          label: "Layouts",
+          label: "Blocks",
           fields: [
             {
               name: "layout",
-              label: "Activity Layout",
+              label: "Project blocks",
               type: "blocks",
-              blocks: [Participants, RichText],
+              blocks: [Participants, RichText, Program],
             },
           ],
         },
