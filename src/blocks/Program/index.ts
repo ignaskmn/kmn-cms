@@ -36,6 +36,10 @@ export const Program: Block = {
           required: true,
         },
         {
+          name: "expandOnLoad",
+          type: "checkbox",
+        },
+        {
           name: "blocks",
           type: "blocks",
           blocks: [Participants, EventList],
