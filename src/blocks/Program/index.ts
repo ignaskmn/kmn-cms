@@ -1,6 +1,8 @@
 import { Block } from "payload/types";
 import { Participants } from "../Participants";
 import { EventList } from "../lists/Event";
+import { LexicalRichText } from "../LexicalRichText";
+import { Video } from "../Video";
 
 export const Program: Block = {
   slug: "programBlock",
@@ -9,6 +11,12 @@ export const Program: Block = {
     {
       name: "image",
       label: "Image",
+      type: "upload",
+      relationTo: "images",
+    },
+    {
+      name: "floatingImage",
+      label: "Floating Image",
       type: "upload",
       relationTo: "images",
     },
@@ -42,7 +50,7 @@ export const Program: Block = {
         {
           name: "blocks",
           type: "blocks",
-          blocks: [Participants, EventList],
+          blocks: [ Participants, EventList, LexicalRichText, Video ],
         },
       ],
     },

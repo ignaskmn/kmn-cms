@@ -107,6 +107,7 @@ export interface Project {
         image?: string | Image;
         section?: {
           sectionTitle: string;
+          expandOnLoad?: boolean;
           blocks?: (
             | {
                 participants?: {
@@ -129,6 +130,20 @@ export interface Project {
                 id?: string;
                 blockName?: string;
                 blockType: 'eventListBlock';
+              }
+            | {
+                lexicalRichText?: {
+                  [k: string]: unknown;
+                }[];
+                id?: string;
+                blockName?: string;
+                blockType: 'richText';
+              }
+            | {
+                youtubeId?: string;
+                id?: string;
+                blockName?: string;
+                blockType: 'videoBlock';
               }
           )[];
           id?: string;
