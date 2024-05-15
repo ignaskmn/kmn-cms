@@ -105,6 +105,7 @@ export interface Project {
       }
     | {
         image?: string | Image;
+        floatingImageNumber?: string;
         section?: {
           sectionTitle: string;
           expandOnLoad?: boolean;

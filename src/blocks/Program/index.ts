@@ -15,10 +15,8 @@ export const Program: Block = {
       relationTo: "images",
     },
     {
-      name: "floatingImage",
-      label: "Floating Image",
-      type: "upload",
-      relationTo: "images",
+      name: "floatingImageNumber",
+      type: "text"
     },
     {
       name: "section",
