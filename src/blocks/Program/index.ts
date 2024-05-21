@@ -3,6 +3,7 @@ import { Participants } from "../Participants";
 import { EventList } from "../lists/Event";
 import { LexicalRichText } from "../LexicalRichText";
 import { Video } from "../Video";
+import { ProgramItems } from "../ProgramItems";
 
 export const Program: Block = {
   slug: "programBlock",
@@ -48,7 +49,7 @@ export const Program: Block = {
         {
           name: "blocks",
           type: "blocks",
-          blocks: [ Participants, EventList, LexicalRichText, Video ],
+          blocks: [ Participants, EventList, LexicalRichText, Video, ProgramItems ],
         },
       ],
     },

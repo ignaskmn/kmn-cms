@@ -146,6 +146,19 @@ export interface Project {
                 blockName?: string;
                 blockType: 'videoBlock';
               }
+            | {
+                programCollapse?: {
+                  name: string;
+                  subtext?: string;
+                  content?: {
+                    [k: string]: unknown;
+                  }[];
+                  id?: string;
+                }[];
+                id?: string;
+                blockName?: string;
+                blockType: 'programCollapseBlock';
+              }
           )[];
           id?: string;
         }[];
