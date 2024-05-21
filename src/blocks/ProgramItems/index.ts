@@ -14,7 +14,7 @@ import {
 
 export const ProgramItems: Block = {
   slug: "programItemsBlock",
-  labels: { singular: "Program Item", plural: "Program Items" },
+  labels: { singular: "Program Items", plural: "Program Items" },
   fields: [
     {
       name: "programItems",
