@@ -147,7 +147,7 @@ export interface Project {
                 blockType: 'videoBlock';
               }
             | {
-                programCollapse?: {
+                programItems?: {
                   name: string;
                   subtext?: string;
                   content?: {
@@ -157,7 +157,7 @@ export interface Project {
                 }[];
                 id?: string;
                 blockName?: string;
-                blockType: 'programCollapseBlock';
+                blockType: 'programItemsBlock';
               }
           )[];
           id?: string;
